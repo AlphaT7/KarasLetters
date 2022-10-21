@@ -1,0 +1,27 @@
+{
+  "A": {
+    "msg": "Hello Karra, please choose the capital letter 'A'.",
+    "letter": "A",
+    "capital": true
+  },
+  "B": {
+    "msg": "Hello Karra, please choose the capital letter 'B'.",
+    "letter": "B",
+    "capital": true
+  },
+  "C": {
+    "msg": "Hello Karra, please choose the capital letter 'C'.",
+    "letter": "C",
+    "capital": true
+  },
+  "D": {
+    "msg": "Hello Karra, please choose the capital letter 'D'.",
+    "letter": "D",
+    "capital": true
+  },
+  "E": {
+    "msg": "Hello Karra, please choose the capital letter 'E'.",
+    "letter": "E",
+    "capital": true
+  }
+}
