@@ -3,27 +3,32 @@
     {
       "msg": "Hello Karra, please choose the cursive lower case letter 'A'.",
       "character": "a",
-      "cursive": true
+      "cursive": true,
+      "check": "lcc-a"
     },
     {
       "msg": "Hello Karra, please choose the cursive lower case letter 'B'.",
       "character": "b",
-      "cursive": true
+      "cursive": true,
+      "check": "lcc-b"
     },
     {
       "msg": "Hello Karra, please choose the cursive lower case letter 'C'.",
       "character": "c",
-      "cursive": true
+      "cursive": true,
+      "check": "lcc-c"
     },
     {
       "msg": "Hello Karra, please choose the cursive lower case letter 'D'.",
       "character": "d",
-      "cursive": true
+      "cursive": true,
+      "check": "lcc-d"
     },
     {
       "msg": "Hello Karra, please choose the cursive lower case letter 'E'.",
       "character": "e",
-      "cursive": true
+      "cursive": true,
+      "check": "lcc-e"
     }
   ]
 }

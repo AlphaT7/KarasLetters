@@ -3,27 +3,32 @@
     {
       "msg": "Hello Karra, please choose the cursive upper case letter 'A'.",
       "character": "A",
-      "cursive": true
+      "cursive": true,
+      "check": "ucc-a"
     },
     {
       "msg": "Hello Karra, please choose the cursive upper case letter 'B'.",
       "character": "B",
-      "cursive": true
+      "cursive": true,
+      "check": "ucc-b"
     },
     {
       "msg": "Hello Karra, please choose the cursive upper case letter 'C'.",
       "character": "C",
-      "cursive": true
+      "cursive": true,
+      "check": "ucc-c"
     },
     {
       "msg": "Hello Karra, please choose the cursive upper case letter 'D'.",
       "character": "D",
-      "cursive": true
+      "cursive": true,
+      "check": "ucc-d"
     },
     {
       "msg": "Hello Karra, please choose the cursive upper case letter 'E'.",
       "character": "E",
-      "cursive": true
+      "cursive": true,
+      "check": "ucc-e"
     }
   ]
 }

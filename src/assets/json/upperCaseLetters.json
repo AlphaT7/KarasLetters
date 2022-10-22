@@ -3,27 +3,32 @@
     {
       "msg": "Hello Karra, please choose the capital letter 'A'.",
       "character": "A",
-      "cursive": false
+      "cursive": false,
+      "check": "ucl-a"
     },
     {
       "msg": "Hello Karra, please choose the capital letter 'B'.",
       "character": "B",
-      "cursive": false
+      "cursive": false,
+      "check": "ucl-b"
     },
     {
       "msg": "Hello Karra, please choose the capital letter 'C'.",
       "character": "C",
-      "cursive": false
+      "cursive": false,
+      "check": "ucl-c"
     },
     {
       "msg": "Hello Karra, please choose the capital letter 'D'.",
       "character": "D",
-      "cursive": false
+      "cursive": false,
+      "check": "ucl-d"
     },
     {
       "msg": "Hello Karra, please choose the capital letter 'E'.",
       "character": "E",
-      "cursive": false
+      "cursive": false,
+      "check": "ucl-e"
     }
   ]
 }

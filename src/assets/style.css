@@ -94,25 +94,25 @@ div {
   font-size: 0.88em;
   color: rgb(100, 61, 136);
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   background: rgb(231, 206, 255);
-  border: 2px solid rgb(100, 61, 136);
+  border: 3px solid rgb(178, 102, 250);
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 }
 
 #closeModal {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
+  float: right;
   font-size: 0.5em;
-  color: rgb(100, 61, 136);
+  color: #86c6cd;
   margin: 10px;
+  font-weight: bold;
   padding: 5px;
-  border-radius: 5px;
-  background: rgb(231, 206, 255);
-  border: 2px solid rgb(100, 61, 136);
+  border-radius: 10px;
+  background: #ceecff;
+  border: 3px solid rgb(61, 136, 123);
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -302,20 +302,6 @@ button:active {
   --glow-spread-color: #ff7b7bc7;
   --enhanced-glow-color: #ffcece;
   --btn-color: #883d3d;
-  border: 0.25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
 }
 
 .correct {
@@ -323,18 +309,4 @@ button:active {
   --glow-spread-color: #7bd2ffc7;
   --enhanced-glow-color: #ceecff;
   --btn-color: #3d6788;
-  border: 0.25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
 }

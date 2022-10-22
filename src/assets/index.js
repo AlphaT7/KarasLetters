@@ -22,7 +22,7 @@ choice.addEventListener("click", () => {
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
-    if (e.target.innerText == answer.character) {
+    if (e.target.dataset.check == answer.check) {
       e.target.classList.add("correct");
       console.log(true);
     } else {
@@ -65,17 +65,23 @@ function init() {
     }
   );
 
+  let numbers = fetch("./json/numbers.json").then((response) => {
+    return response.json();
+  });
+
   Promise.all([
     upperCaseLetters,
     lowerCaseLetters,
     lowerCaseCursive,
     upperCaseCursive,
+    numbers,
   ]).then((values) => {
     answerArray = [
       ...values[0].data,
       ...values[1].data,
       ...values[2].data,
       ...values[3].data,
+      ...values[4].data,
     ];
   });
 }
@@ -125,6 +131,7 @@ function speak() {
         btn.classList.add("cursive");
       }
       btn.innerText = characterObj.character;
+      btn.dataset.check = characterObj.check;
       lastUsedObj = characterObj;
     } else {
       let characterObj = randomCharacter(choiceArray);
@@ -132,12 +139,13 @@ function speak() {
         btn.classList.add("cursive");
       }
       btn.innerText = characterObj.character;
+      btn.dataset.check = characterObj.check;
       lastUsedObj = characterObj;
     }
   });
 
   speech.voice = voices[4];
-  speechSynthesis.speak(speech);
+  //speechSynthesis.speak(speech);
 }
 
 init();
