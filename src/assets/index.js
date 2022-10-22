@@ -16,27 +16,33 @@ c2.innerText = "?";
 c3.innerText = "?";
 
 choice.addEventListener("click", () => {
+  document.querySelectorAll(".userChoice").forEach((element) => {
+    element.classList.remove("correct");
+    element.classList.remove("error");
+  });
   speak();
 });
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
     if (e.target.innerText == answer) {
+      e.target.classList.add("correct");
       console.log(true);
     } else {
+      e.target.classList.add("error");
       console.log(false);
     }
   });
 });
 
 function init() {
-  let upperCaseLetters = fetch("./assets/json/upperCaseLetters.json").then(
+  let upperCaseLetters = fetch("./json/upperCaseLetters.json").then(
     (response) => {
       return response.json();
     }
   );
 
-  let lowerCaseLetters = fetch("./assets/json/lowerCaseLetters.json").then(
+  let lowerCaseLetters = fetch("./json/lowerCaseLetters.json").then(
     (response) => {
       return response.json();
     }
@@ -94,7 +100,7 @@ function speak() {
   });
 
   letterList = speech.voice = voices[4];
-  speechSynthesis.speak(speech);
+  //speechSynthesis.speak(speech);
 }
 
 init();

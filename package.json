@@ -1,0 +1,25 @@
+{
+  "name": "karasletters",
+  "version": "1.0.0",
+  "description": "A letter / number learning game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlphaT7/KarasLetters.git"
+  },
+  "author": "Jamison C Winters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlphaT7/KarasLetters/issues"
+  },
+  "homepage": "https://github.com/AlphaT7/KarasLetters#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
