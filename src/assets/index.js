@@ -1,31 +1,28 @@
 let log = console.log.bind(console);
 const synth = window.speechSynthesis;
 
-let choice = document.getElementById("questionBtn");
+let choice = document.getElementById("speakBtn");
 let c1 = document.getElementById("c1");
 let c2 = document.getElementById("c2");
 let c3 = document.getElementById("c3");
+let c4 = document.getElementById("c4");
 let upperCase = {};
 let lowerCase = {};
 let answerArray = {};
 let answer = "";
 
-choice.innerText = "?";
-c1.innerText = "?";
-c2.innerText = "?";
-c3.innerText = "?";
-
 choice.addEventListener("click", () => {
   document.querySelectorAll(".userChoice").forEach((element) => {
     element.classList.remove("correct");
     element.classList.remove("error");
+    element.classList.remove("cursive");
   });
   speak();
 });
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
-    if (e.target.innerText == answer) {
+    if (e.target.innerText == answer.character) {
       e.target.classList.add("correct");
       console.log(true);
     } else {
@@ -33,6 +30,14 @@ document.querySelectorAll(".userChoice").forEach((element) => {
       console.log(false);
     }
   });
+});
+
+document.getElementById("openModal").addEventListener("click", () => {
+  document.getElementById("modal").classList.add("openModal");
+});
+
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("modal").classList.remove("openModal");
 });
 
 function init() {
@@ -48,59 +53,91 @@ function init() {
     }
   );
 
-  Promise.all([upperCaseLetters, lowerCaseLetters]).then((values) => {
-    answerArray = { ...values[0], ...values[1] };
+  let lowerCaseCursive = fetch("./json/lowerCaseCursive.json").then(
+    (response) => {
+      return response.json();
+    }
+  );
+
+  let upperCaseCursive = fetch("./json/upperCaseCursive.json").then(
+    (response) => {
+      return response.json();
+    }
+  );
+
+  Promise.all([
+    upperCaseLetters,
+    lowerCaseLetters,
+    lowerCaseCursive,
+    upperCaseCursive,
+  ]).then((values) => {
+    answerArray = [
+      ...values[0].data,
+      ...values[1].data,
+      ...values[2].data,
+      ...values[3].data,
+    ];
   });
 }
 
 function randomQuery(objArray) {
-  return objArray[
-    (Math.random() * (Object.keys(objArray).length - 1)).toFixed(0)
-  ];
+  return objArray[(Math.random() * (objArray.length - 1)).toFixed(0)];
 }
 
-function randomLetter(letters) {
-  return letters[
-    (Math.random() * (Object.keys(letters).length - 1)).toFixed(0)
-  ];
+function randomCharacter(characters) {
+  return characters[(Math.random() * (characters.length - 1)).toFixed(0)];
 }
 
-function filterUsed(letters, exclusion) {
-  return letters.filter((letter) => {
-    return letter != exclusion;
+function filterUsed(characters, exclusion) {
+  return characters.filter((character) => {
+    return character != exclusion;
   });
 }
 
 function speak() {
-  let answerList = Object.entries(answerArray);
-  let letterList = [...Object.keys(answerArray)];
-  let voices = synth.getVoices();
-  let choiceArray = ["", "", ""];
+  // let letterList = answerArray.map((obj) => {
+  //   return obj.character;
+  // });
 
-  let randomObj = randomQuery(answerList)[1];
-  answer = randomObj.letter;
+  let letterList = answerArray;
+
+  let voices = synth.getVoices();
+  let choiceArray = ["", "", "", ""];
+  let lastUsedObj = {};
+  let randomObj = randomQuery(answerArray);
+  answer = randomObj;
   let speech = new SpeechSynthesisUtterance(randomObj.msg);
 
   choiceArray.map((choice, i, array) => {
     if (i != 0) {
       letterList = filterUsed(letterList, array[i - 1]);
-      array[i] = randomLetter(letterList);
+      array[i] = randomCharacter(letterList);
     } else {
       array[i] = answer;
     }
   });
 
-  [c1, c2, c3].map((btn, i, array) => {
+  [c1, c2, c3, c4].map((btn, i, array) => {
     if (i != 0) {
-      choiceArray = filterUsed(choiceArray, array[i - 1].innerText);
-      btn.innerText = randomLetter(choiceArray);
+      choiceArray = filterUsed(choiceArray, lastUsedObj);
+      let characterObj = randomCharacter(choiceArray);
+      if (characterObj.cursive) {
+        btn.classList.add("cursive");
+      }
+      btn.innerText = characterObj.character;
+      lastUsedObj = characterObj;
     } else {
-      btn.innerText = randomLetter(choiceArray);
+      let characterObj = randomCharacter(choiceArray);
+      if (characterObj.cursive) {
+        btn.classList.add("cursive");
+      }
+      btn.innerText = characterObj.character;
+      lastUsedObj = characterObj;
     }
   });
 
-  letterList = speech.voice = voices[4];
-  //speechSynthesis.speak(speech);
+  speech.voice = voices[4];
+  speechSynthesis.speak(speech);
 }
 
 init();

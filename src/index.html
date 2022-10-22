@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
-    <title>Karas Letters</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <title>Kara's Letters</title>
     <link rel="stylesheet" href="style.css" />
     <!--<script type="module" src="../src/index.js"></script>-->
     <script
@@ -19,11 +19,51 @@
     </script>
   </head>
   <body>
+    <div id="modal">
+      <div id="modalTitle">
+        Settings
+        <div id="closeModal" class="material-icons">close</div>
+      </div>
+      <div id="letterSettings">
+        <table>
+          <thead>
+            <td>Include:</td>
+            <td></td>
+          </thead>
+          <tr>
+            <td>UpperCase Letters</td>
+            <td>
+              <input type="checkbox" id="upperCaseNormal" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>LowerCase Letters</td>
+            <td><input type="checkbox" id="lowerCaseNormal" /></td>
+          </tr>
+          <tr>
+            <td>Numbers</td>
+            <td><input type="checkbox" id="numbers" /></td>
+          </tr>
+          <tr>
+            <td>UpperCase Cursive Letters</td>
+            <td><input type="checkbox" id="upperCaseCursive" /></td>
+          </tr>
+          <tr>
+            <td>LowerCase Cursive Letters</td>
+            <td><input type="checkbox" id="lowerCaseCursive" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <div id="wrapper">
-      <dialog id="modal" open>
-        <div id="title">Settings</div>
-      </dialog>
-      <div id="top"><button id="questionBtn">?</button></div>
+      <div id="wrapperTitle">
+        Kara's Letters
+        <div id="openModal" class="material-icons">settings</div>
+      </div>
+      <div id="top">
+        <button id="speakBtn" class="material-icons">record_voice_over</button>
+      </div>
       <div id="b1" class="gridBtn">
         <button id="c1" class="userChoice">?</button>
       </div>
@@ -32,6 +72,9 @@
       </div>
       <div id="b3" class="gridBtn">
         <button id="c3" class="userChoice">?</button>
+      </div>
+      <div id="b4" class="gridBtn">
+        <button id="c4" class="userChoice">?</button>
       </div>
     </div>
   </body>

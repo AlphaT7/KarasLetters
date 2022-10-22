@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(./fonts/MaterialIcons-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "HerrVonMuellerhoff";
+  font-style: normal;
+  font-weight: 400;
+  src: local("HerrVonMuellerhoff"), local("HerrVonMuellerhoff-Regular"),
+    url(./fonts/HerrVonMuellerhoff-Regular.ttf) format("truetype");
+}
+
 html,
 body {
   width: 100%;
@@ -5,82 +21,226 @@ body {
   margin: 0;
   padding: 0;
   background: #212121;
+  position: relative;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 div {
   box-sizing: border-box;
 }
 
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.cursive {
+  font-family: "HerrVonMuellerhoff";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 5em;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+#speakBtn {
+  font-size: 5em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 50%;
+}
+
+#openModal {
+  position: relative;
+  float: right;
+  font-size: 0.88em;
+  color: rgb(100, 61, 136);
+  padding: 5px;
+  border-radius: 5px;
+  background: rgb(231, 206, 255);
+  border: 2px solid rgb(100, 61, 136);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.5em;
+  color: rgb(100, 61, 136);
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background: rgb(231, 206, 255);
+  border: 2px solid rgb(100, 61, 136);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 #wrapper {
-  
-  margin: 0;
+  margin: 0 auto;
+  padding: 0;
   width: 100%;
   max-width: 500px;
   height: 500px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 15px;
   grid-template-areas:
-    "a a a"
-    "b b b"
-    "c d e";
+    "a a"
+    "b b"
+    "c d"
+    "e f";
+}
+
+#wrapperTitle {
+  grid-area: a;
+  width: 100%;
+  height: 75px;
+  background: rgb(100, 61, 136);
+  color: rgb(231, 206, 255);
+  padding: 0.25em;
+  font-size: 3em;
 }
 
 #top {
-  grid-area: a;
+  grid-area: b;
   text-align: center;
-  font-size: 12em;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
+}
+
+.userChoice {
+  width: 95%;
 }
 
 .gridBtn {
   text-align: center;
-  font-size: 10em;
   cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  align-self: center;
+  justify-self: center;
 }
 
 #b1 {
   grid-area: "c";
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 #b2 {
   grid-area: "d";
-    -webkit-user-select: none;
-  user-select: none;
 }
 
 #b3 {
   grid-area: "e";
-    -webkit-user-select: none;
-  user-select: none;
+}
+
+#b4 {
+  grid-area: "f";
 }
 
 #modal {
+  position: absolute;
   width: 100%;
   height: 100%;
-  border: none;
-  background: rgba(255,255,255, .75);
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 2;
+  transition: all 1s;
+  left: 100%;
 }
 
-#title {
+.openModal {
+  left: 0 !important;
+}
+
+#modalTitle {
+  position: relative;
   width: 100%;
   height: 75px;
   background: #86c6cd;
   font-size: 3em;
-  padding: .15em;
+  padding: 0.15em;
   color: #fff;
+}
+
+#letterSettings {
+  margin: 0 auto;
+  width: 100%;
+  padding: 1em;
+}
+
+#letterSettings table {
+  width: 100%;
+  font-size: 1.5em;
+}
+
+#letterSettings table thead {
+  font-weight: bold;
+}
+
+#letterSettings table thead td {
+  padding-left: 5px !important;
+}
+
+#letterSettings table tr {
+  border-top: 1px solid rgba(191, 123, 255, 0.781);
+  background: #ceecff;
+}
+
+#letterSettings table tr td {
+  padding: 0.5em;
+}
+
+#letterSettings table tr td:nth-child(even) {
+  text-align: center;
+}
+
+#letterSettings table tr td:nth-child(odd) {
+  padding-left: 20px;
 }
 
 /* ------ buttons ------ */
@@ -91,18 +251,20 @@ button {
   --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
   --btn-color: rgb(100, 61, 136);
-  border: 0.25em solid var(--glow-color);
-  padding: 1em 3em;
+  border: 3px solid var(--glow-color);
+  padding: 5px !important;
   color: var(--glow-color);
-  font-size: 15px;
+  font-size: 5em;
   font-weight: bold;
+  width: 100%;
+  height: 115px;
   background-color: var(--btn-color);
-  border-radius: 1em;
+  border-radius: 15px;
   outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
+  /*box-shadow: 0 0 1em 0.25em var(--glow-color),
     0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
+    inset 0 0 0.75em 0.25em var(--glow-color);*/
+  text-shadow: 0 0 1 var(--glow-color);
   position: relative;
   transition: all 0.3s;
 }
@@ -158,7 +320,7 @@ button:active {
 
 .correct {
   --glow-color: #b0ecff;
-  --glow-spread-color: #7bd2ffc7
+  --glow-spread-color: #7bd2ffc7;
   --enhanced-glow-color: #ceecff;
   --btn-color: #3d6788;
   border: 0.25em solid var(--glow-color);

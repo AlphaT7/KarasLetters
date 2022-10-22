@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "msg": "Hello Karra, please choose the cursive lower case letter 'A'.",
+      "character": "a",
+      "cursive": true
+    },
+    {
+      "msg": "Hello Karra, please choose the cursive lower case letter 'B'.",
+      "character": "b",
+      "cursive": true
+    },
+    {
+      "msg": "Hello Karra, please choose the cursive lower case letter 'C'.",
+      "character": "c",
+      "cursive": true
+    },
+    {
+      "msg": "Hello Karra, please choose the cursive lower case letter 'D'.",
+      "character": "d",
+      "cursive": true
+    },
+    {
+      "msg": "Hello Karra, please choose the cursive lower case letter 'E'.",
+      "character": "e",
+      "cursive": true
+    }
+  ]
+}
