@@ -6,9 +6,11 @@ let c1 = document.getElementById("c1");
 let c2 = document.getElementById("c2");
 let c3 = document.getElementById("c3");
 let c4 = document.getElementById("c4");
-let upperCase = {};
-let lowerCase = {};
-let answerArray = {};
+let upperCaseNormal = {};
+let lowerCaseNormal = {};
+let upperCaseCursive = {};
+let lowerCaseCursive = {};
+let numberCharacters = {};
 let answer = "";
 
 choice.addEventListener("click", () => {
@@ -41,49 +43,43 @@ document.getElementById("closeModal").addEventListener("click", () => {
 });
 
 function init() {
-  let upperCaseLetters = fetch("./json/upperCaseLetters.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
-
-  let lowerCaseLetters = fetch("./json/lowerCaseLetters.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
-
-  let lowerCaseCursive = fetch("./json/lowerCaseCursive.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
-
-  let upperCaseCursive = fetch("./json/upperCaseCursive.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
-
-  let numbers = fetch("./json/numbers.json").then((response) => {
+  let ucNorm = fetch("./json/upperCaseLetters.json").then((response) => {
     return response.json();
   });
 
-  Promise.all([
-    upperCaseLetters,
-    lowerCaseLetters,
-    lowerCaseCursive,
-    upperCaseCursive,
-    numbers,
-  ]).then((values) => {
-    answerArray = [
-      ...values[0].data,
-      ...values[1].data,
-      ...values[2].data,
-      ...values[3].data,
-      ...values[4].data,
-    ];
+  let lcNorm = fetch("./json/lowerCaseLetters.json").then((response) => {
+    return response.json();
   });
+
+  let lcCursive = fetch("./json/lowerCaseCursive.json").then((response) => {
+    return response.json();
+  });
+
+  let ucCursive = fetch("./json/upperCaseCursive.json").then((response) => {
+    return response.json();
+  });
+
+  let numCharacters = fetch("./json/numbers.json").then((response) => {
+    return response.json();
+  });
+
+  Promise.all([ucNorm, lcNorm, lcCursive, ucCursive, numCharacters]).then(
+    (values) => {
+      [
+        upperCaseNormal,
+        lowerCaseNormal,
+        upperCaseCursive,
+        lowerCaseCursive,
+        numberCharacters,
+      ] = [
+        values[0].data,
+        values[1].data,
+        values[2].data,
+        values[3].data,
+        values[4].data,
+      ];
+    }
+  );
 }
 
 function randomQuery(objArray) {
@@ -101,9 +97,31 @@ function filterUsed(characters, exclusion) {
 }
 
 function speak() {
-  // let letterList = answerArray.map((obj) => {
-  //   return obj.character;
-  // });
+  let answerArray = [];
+
+  let cbList = [
+    "upperCaseNormal",
+    "lowerCaseNormal",
+    "upperCaseCursive",
+    "lowerCaseCursive",
+    "numberCharacters",
+  ];
+
+  let objList = [
+    upperCaseNormal,
+    lowerCaseNormal,
+    upperCaseCursive,
+    lowerCaseCursive,
+    numberCharacters,
+  ];
+  log(objList);
+  cbList.forEach((cb, i) => {
+    if (document.getElementById(cb).checked) {
+      answerArray.push(...objList[i]);
+    }
+  });
+
+  answerArray = answerArray.length > 0 ? answerArray : lowerCaseNormal;
 
   let letterList = answerArray;
 
