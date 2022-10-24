@@ -1,9 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: "./src/assets/index.js",
+  entry: "./src/index.js",
   mode: "development",
+  //mode: "production",
   devtool: "inline-source-map",
   target: "web",
   stats: {
@@ -22,13 +24,17 @@ module.exports = {
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: "Kara's Letters",
       template: "src/index.html",
+    }),
+    new CopyPlugin({
+      // this plugin copy's the asset folder to the production public folder
+      patterns: [{ from: "./src/assets", to: "./assets/" }],
     }),
   ],
   module: {

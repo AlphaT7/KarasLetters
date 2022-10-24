@@ -1,5 +1,7 @@
-let log = console.log.bind(console);
+const log = console.log.bind(console);
 const synth = window.speechSynthesis;
+// english voice is array item # 10 if it's ios; 4 if windows/android;
+const englishVoice = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? 10 : 4;
 
 let choice = document.getElementById("speakBtn");
 let c1 = document.getElementById("c1");
@@ -19,22 +21,23 @@ choice.addEventListener("click", () => {
     element.classList.remove("error");
     element.classList.remove("cursive");
   });
-  speak();
+  populateAnswers();
 });
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
     if (e.target.dataset.check == answer.check) {
       e.target.classList.add("correct");
-      console.log(true);
+      speak("That's right!");
     } else {
       e.target.classList.add("error");
-      console.log(false);
+      speak("Incorrect!");
+      speak(answer.msg);
     }
   });
 });
 
-document.getElementById("openModal").addEventListener("click", () => {
+document.getElementById("openModal").addEventListener("click", (e) => {
   document.getElementById("modal").classList.add("openModal");
 });
 
@@ -96,7 +99,14 @@ function filterUsed(characters, exclusion) {
   });
 }
 
-function speak() {
+function speak(textToSpeak) {
+  let voices = synth.getVoices();
+  let speech = new SpeechSynthesisUtterance(textToSpeak);
+  speech.voice = voices[englishVoice];
+  speechSynthesis.speak(speech);
+}
+
+function populateAnswers() {
   let answerArray = [];
 
   let cbList = [
@@ -114,7 +124,7 @@ function speak() {
     lowerCaseCursive,
     numberCharacters,
   ];
-  log(objList);
+
   cbList.forEach((cb, i) => {
     if (document.getElementById(cb).checked) {
       answerArray.push(...objList[i]);
@@ -125,12 +135,11 @@ function speak() {
 
   let letterList = answerArray;
 
-  let voices = synth.getVoices();
   let choiceArray = ["", "", "", ""];
   let lastUsedObj = {};
   let randomObj = randomQuery(answerArray);
   answer = randomObj;
-  let speech = new SpeechSynthesisUtterance(randomObj.msg);
+  //let speech = new SpeechSynthesisUtterance(randomObj.msg);
 
   choiceArray.map((choice, i, array) => {
     if (i != 0) {
@@ -161,9 +170,7 @@ function speak() {
       lastUsedObj = characterObj;
     }
   });
-
-  speech.voice = voices[4];
-  //speechSynthesis.speak(speech);
+  speak("Hello Karra! " + answer.msg);
 }
 
 init();

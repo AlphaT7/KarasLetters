@@ -1,31 +1,31 @@
 {
   "data": [
     {
-      "msg": "Hello Karra, please choose the capital letter 'A'.",
+      "msg": "Please choose the capital letter 'A'.",
       "character": "A",
       "cursive": false,
       "check": "ucl-a"
     },
     {
-      "msg": "Hello Karra, please choose the capital letter 'B'.",
+      "msg": "Please choose the capital letter 'B'.",
       "character": "B",
       "cursive": false,
       "check": "ucl-b"
     },
     {
-      "msg": "Hello Karra, please choose the capital letter 'C'.",
+      "msg": "Please choose the capital letter 'C'.",
       "character": "C",
       "cursive": false,
       "check": "ucl-c"
     },
     {
-      "msg": "Hello Karra, please choose the capital letter 'D'.",
+      "msg": "Please choose the capital letter 'D'.",
       "character": "D",
       "cursive": false,
       "check": "ucl-d"
     },
     {
-      "msg": "Hello Karra, please choose the capital letter 'E'.",
+      "msg": "Please choose the capital letter 'E'.",
       "character": "E",
       "cursive": false,
       "check": "ucl-e"

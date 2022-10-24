@@ -6,17 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <title>Kara's Letters</title>
-    <link rel="stylesheet" href="style.css" />
-    <!--<script type="module" src="../src/index.js"></script>-->
+    <link rel="stylesheet" href="./assets/style.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.14.7/vconsole.min.js"
       integrity="sha512-6QmTgWojAa22eHqe0ydedSV3vPvJe/obRcfCVEZCt1NY4qNM0tSXG2HF1AhwwYTCUmEx3DjxmQcb6jFdfO/MwA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-      //let vConsole = new window.VConsole();
-    </script>
   </head>
   <body>
     <div id="modal">
@@ -31,30 +27,35 @@
             <td></td>
           </thead>
           <tr>
-            <td>UpperCase Letters</td>
+            <td><label for="upperCaseNormal">UpperCase Letters</label></td>
             <td>
               <input type="checkbox" id="upperCaseNormal" />
             </td>
           </tr>
           <tr>
-            <td>LowerCase Letters</td>
+            <td><label for="lowerCaseNormal">Letters</label></td>
             <td><input type="checkbox" id="lowerCaseNormal" checked /></td>
           </tr>
           <tr>
-            <td>Numbers</td>
+            <td><label for="numberCharacters">Numbers</label></td>
             <td><input type="checkbox" id="numberCharacters" /></td>
           </tr>
           <tr>
-            <td>UpperCase Cursive Letters</td>
+            <td>
+              <label for="upperCaseCursive">UpperCase Cursive Letters</label>
+            </td>
             <td><input type="checkbox" id="upperCaseCursive" /></td>
           </tr>
           <tr>
-            <td>LowerCase Cursive Letters</td>
+            <td>
+              <label for="lowerCaseCursive">LowerCase Cursive Letters</label>
+            </td>
             <td><input type="checkbox" id="lowerCaseCursive" /></td>
           </tr>
         </table>
       </div>
     </div>
+    <div id="test"></div>
     <div id="wrapper">
       <div id="wrapperTitle">
         Kara's Letters
@@ -76,5 +77,8 @@
         <button id="c4" class="userChoice">?</button>
       </div>
     </div>
+    <script>
+      //let vConsole = new window.VConsole();
+    </script>
   </body>
 </html>

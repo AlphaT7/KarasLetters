@@ -1,31 +1,31 @@
 {
   "data": [
     {
-      "msg": "Hello Karra, please choose the lower case letter 'a'.",
+      "msg": "Please choose the lower case letter 'A'.",
       "character": "a",
       "cursive": false,
       "check": "lcl-a"
     },
     {
-      "msg": "Hello Karra, please choose the lower case letter 'b'.",
+      "msg": "Please choose the lower case letter 'B'.",
       "character": "b",
       "cursive": false,
       "check": "lcl-b"
     },
     {
-      "msg": "Hello Karra, please choose the lower case letter 'c'.",
+      "msg": "Please choose the lower case letter 'C'.",
       "character": "c",
       "cursive": false,
       "check": "lcl-c"
     },
     {
-      "msg": "Hello Karra, please choose the lower case letter 'd'.",
+      "msg": "Please choose the lower case letter 'D'.",
       "character": "d",
       "cursive": false,
       "check": "lcl-d"
     },
     {
-      "msg": "Hello Karra, please choose the lower case letter 'e'.",
+      "msg": "Please choose the lower case letter 'E'.",
       "character": "e",
       "cursive": false,
       "check": "lcl-e"
