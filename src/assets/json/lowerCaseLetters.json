@@ -29,6 +29,132 @@
       "character": "e",
       "cursive": false,
       "check": "lcl-e"
+    },
+    {
+      "msg": "Please choose the lower case letter 'F'.",
+      "character": "f",
+      "cursive": false,
+      "check": "lcl-f"
+    },
+    {
+      "msg": "Please choose the lower case letter 'G'.",
+      "character": "g",
+      "cursive": false,
+      "check": "lcl-g"
+    },
+    {
+      "msg": "Please choose the lower case letter 'H'.",
+      "character": "h",
+      "cursive": false,
+      "check": "lcl-h"
+    },
+    {
+      "msg": "Please choose the lower case letter 'I'.",
+      "character": "i",
+      "cursive": false,
+      "check": "lcl-i"
+    },
+    {
+      "msg": "Please choose the lower case letter 'J'.",
+      "character": "j",
+      "cursive": false,
+      "check": "lcl-j"
+    },
+    {
+      "msg": "Please choose the lower case letter 'K'.",
+      "character": "k",
+      "cursive": false,
+      "check": "lcl-k"
+    },
+    {
+      "msg": "Please choose the lower case letter 'L'.",
+      "character": "l",
+      "cursive": false,
+      "check": "lcl-l"
+    },
+    {
+      "msg": "Please choose the lower case letter 'M'.",
+      "character": "m",
+      "cursive": false,
+      "check": "lcl-m"
+    },
+    {
+      "msg": "Please choose the lower case letter 'N'.",
+      "character": "n",
+      "cursive": false,
+      "check": "lcl-n"
+    },
+    {
+      "msg": "Please choose the lower case letter 'O'.",
+      "character": "o",
+      "cursive": false,
+      "check": "lcl-o"
+    },
+    {
+      "msg": "Please choose the lower case letter 'P'.",
+      "character": "p",
+      "cursive": false,
+      "check": "lcl-p"
+    },
+    {
+      "msg": "Please choose the lower case letter 'Q'.",
+      "character": "q",
+      "cursive": false,
+      "check": "lcl-q"
+    },
+    {
+      "msg": "Please choose the lower case letter 'R'.",
+      "character": "r",
+      "cursive": false,
+      "check": "lcl-r"
+    },
+    {
+      "msg": "Please choose the lower case letter 'S'.",
+      "character": "s",
+      "cursive": false,
+      "check": "lcl-s"
+    },
+    {
+      "msg": "Please choose the lower case letter 'T'.",
+      "character": "t",
+      "cursive": false,
+      "check": "lcl-t"
+    },
+    {
+      "msg": "Please choose the lower case letter 'U'.",
+      "character": "u",
+      "cursive": false,
+      "check": "lcl-u"
+    },
+    {
+      "msg": "Please choose the lower case letter 'V'.",
+      "character": "v",
+      "cursive": false,
+      "check": "lcl-v"
+    },
+    {
+      "msg": "Please choose the lower case letter 'W'.",
+      "character": "w",
+      "cursive": false,
+      "check": "lcl-w"
+    },
+    {
+      "msg": "Please choose the lower case letter 'X'.",
+      "character": "x",
+      "cursive": false,
+      "check": "lcl-x"
+    },
+    {
+      "msg": "Please choose the lower case letter 'Y'.",
+      "character": "y",
+      "cursive": false,
+      "check": "lcl-y"
+    },
+    {
+      "msg": "Please choose the lower case letter 'Z'.",
+      "character": "z",
+      "cursive": false,
+      "check": "lcl-z"
     }
   ]
 }

@@ -29,6 +29,132 @@
       "character": "e",
       "cursive": true,
       "check": "lcc-e"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'F'.",
+      "character": "f",
+      "cursive": true,
+      "check": "lcc-f"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'G'.",
+      "character": "g",
+      "cursive": true,
+      "check": "lcc-g"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'H'.",
+      "character": "h",
+      "cursive": true,
+      "check": "lcc-h"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'I'.",
+      "character": "i",
+      "cursive": true,
+      "check": "lcc-i"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'J'.",
+      "character": "j",
+      "cursive": true,
+      "check": "lcc-j"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'K'.",
+      "character": "k",
+      "cursive": true,
+      "check": "lcc-k"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'L'.",
+      "character": "l",
+      "cursive": true,
+      "check": "lcc-l"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'M'.",
+      "character": "m",
+      "cursive": true,
+      "check": "lcc-m"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'N'.",
+      "character": "n",
+      "cursive": true,
+      "check": "lcc-n"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'O'.",
+      "character": "o",
+      "cursive": true,
+      "check": "lcc-o"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'P'.",
+      "character": "p",
+      "cursive": true,
+      "check": "lcc-p"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'Q'.",
+      "character": "q",
+      "cursive": true,
+      "check": "lcc-q"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'R'.",
+      "character": "r",
+      "cursive": true,
+      "check": "lcc-r"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'S'.",
+      "character": "s",
+      "cursive": true,
+      "check": "lcc-s"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'T'.",
+      "character": "t",
+      "cursive": true,
+      "check": "lcc-t"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'U'.",
+      "character": "u",
+      "cursive": true,
+      "check": "lcc-u"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'V'.",
+      "character": "v",
+      "cursive": true,
+      "check": "lcc-v"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'W'.",
+      "character": "w",
+      "cursive": true,
+      "check": "lcc-w"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'X'.",
+      "character": "x",
+      "cursive": true,
+      "check": "lcc-x"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'Y'.",
+      "character": "y",
+      "cursive": true,
+      "check": "lcc-y"
+    },
+    {
+      "msg": "Please choose the cursive lower case letter 'Z'.",
+      "character": "z",
+      "cursive": true,
+      "check": "lcc-z"
     }
   ]
 }

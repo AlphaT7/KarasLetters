@@ -22,35 +22,63 @@
       </div>
       <div id="letterSettings">
         <table>
-          <thead>
-            <td>Include:</td>
-            <td></td>
-          </thead>
           <tr>
-            <td><label for="upperCaseNormal">UpperCase Letters</label></td>
+            <td>Select All</td>
             <td>
-              <input type="checkbox" id="upperCaseNormal" />
+              <div data-toggle="false" id="selectAll" class="material-icons">
+                <div>done_all</div>
+              </div>
             </td>
           </tr>
           <tr>
-            <td><label for="lowerCaseNormal">Letters</label></td>
-            <td><input type="checkbox" id="lowerCaseNormal" checked /></td>
+            <td><label for="upperCaseNormal">Upper Case</label></td>
+            <td>
+              <label for="upperCaseNormal" class="switch">
+                <input type="checkbox" id="upperCaseNormal" checked />
+                <span id="slider1" class="slider round"></span>
+              </label>
+            </td>
           </tr>
+          <tr>
+            <td><label for="lowerCaseNormal">Lower Case</label></td>
+            <td>
+              <label for="lowerCaseNormal" class="switch">
+                <input type="checkbox" id="lowerCaseNormal" />
+                <span id="slider2" class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+
           <tr>
             <td><label for="numberCharacters">Numbers</label></td>
-            <td><input type="checkbox" id="numberCharacters" /></td>
+            <td>
+              <label for="numberCharacters" class="switch">
+                <input type="checkbox" id="numberCharacters" />
+                <span id="slider3" class="slider round"></span>
+              </label>
+            </td>
           </tr>
           <tr>
             <td>
-              <label for="upperCaseCursive">UpperCase Cursive Letters</label>
+              <label for="upperCaseCursive">Upper Case Cursive</label>
             </td>
-            <td><input type="checkbox" id="upperCaseCursive" /></td>
+            <td>
+              <label for="upperCaseCursive" class="switch">
+                <input type="checkbox" id="upperCaseCursive" />
+                <span id="slider4" class="slider round"></span>
+              </label>
+            </td>
           </tr>
           <tr>
             <td>
-              <label for="lowerCaseCursive">LowerCase Cursive Letters</label>
+              <label for="lowerCaseCursive">Lower Case Cursive</label>
             </td>
-            <td><input type="checkbox" id="lowerCaseCursive" /></td>
+            <td>
+              <label for="lowerCaseCursive" class="switch">
+                <input type="checkbox" id="lowerCaseCursive" />
+                <span id="slider5" class="slider round"></span>
+              </label>
+            </td>
           </tr>
         </table>
       </div>
@@ -59,7 +87,7 @@
     <div id="wrapper">
       <div id="wrapperTitle">
         Kara's Letters
-        <div id="openModal" class="material-icons">settings</div>
+        <div id="openModal" class="material-icons">tune</div>
       </div>
       <div id="top">
         <button id="speakBtn" class="material-icons">record_voice_over</button>

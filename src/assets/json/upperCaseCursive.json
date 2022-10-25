@@ -4,31 +4,157 @@
       "msg": "Please choose the cursive upper case letter 'A'.",
       "character": "A",
       "cursive": true,
-      "check": "ucc-a"
+      "check": "ucc-A"
     },
     {
       "msg": "Please choose the cursive upper case letter 'B'.",
       "character": "B",
       "cursive": true,
-      "check": "ucc-b"
+      "check": "ucc-B"
     },
     {
       "msg": "Please choose the cursive upper case letter 'C'.",
       "character": "C",
       "cursive": true,
-      "check": "ucc-c"
+      "check": "ucc-C"
     },
     {
       "msg": "Please choose the cursive upper case letter 'D'.",
       "character": "D",
       "cursive": true,
-      "check": "ucc-d"
+      "check": "ucc-D"
     },
     {
       "msg": "Please choose the cursive upper case letter 'E'.",
       "character": "E",
       "cursive": true,
-      "check": "ucc-e"
+      "check": "ucc-E"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'F'.",
+      "character": "F",
+      "cursive": true,
+      "check": "ucc-F"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'G'.",
+      "character": "G",
+      "cursive": true,
+      "check": "ucc-G"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'H'.",
+      "character": "H",
+      "cursive": true,
+      "check": "ucc-H"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'I'.",
+      "character": "I",
+      "cursive": true,
+      "check": "ucc-I"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'J'.",
+      "character": "J",
+      "cursive": true,
+      "check": "ucc-J"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'K'.",
+      "character": "K",
+      "cursive": true,
+      "check": "ucc-K"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'L'.",
+      "character": "L",
+      "cursive": true,
+      "check": "ucc-L"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'M'.",
+      "character": "M",
+      "cursive": true,
+      "check": "ucc-M"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'N'.",
+      "character": "N",
+      "cursive": true,
+      "check": "ucc-N"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'O'.",
+      "character": "O",
+      "cursive": true,
+      "check": "ucc-O"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'P'.",
+      "character": "P",
+      "cursive": true,
+      "check": "ucc-P"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'Q'.",
+      "character": "Q",
+      "cursive": true,
+      "check": "ucc-Q"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'R'.",
+      "character": "R",
+      "cursive": true,
+      "check": "ucc-R"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'S'.",
+      "character": "S",
+      "cursive": true,
+      "check": "ucc-S"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'T'.",
+      "character": "T",
+      "cursive": true,
+      "check": "ucc-T"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'U'.",
+      "character": "U",
+      "cursive": true,
+      "check": "ucc-U"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'V'.",
+      "character": "V",
+      "cursive": true,
+      "check": "ucc-V"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'W'.",
+      "character": "W",
+      "cursive": true,
+      "check": "ucc-W"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'X'.",
+      "character": "X",
+      "cursive": true,
+      "check": "ucc-X"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'Y'.",
+      "character": "Y",
+      "cursive": true,
+      "check": "ucc-Y"
+    },
+    {
+      "msg": "Please choose the cursive upper case letter 'Z'.",
+      "character": "Z",
+      "cursive": true,
+      "check": "ucc-Z"
     }
   ]
 }

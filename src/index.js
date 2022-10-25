@@ -42,8 +42,82 @@ document.getElementById("openModal").addEventListener("click", (e) => {
 });
 
 document.getElementById("closeModal").addEventListener("click", () => {
+  if (
+    [
+      document.getElementById("upperCaseNormal"),
+      document.getElementById("lowerCaseNormal"),
+      document.getElementById("numberCharacters"),
+      document.getElementById("upperCaseCursive"),
+      document.getElementById("lowerCaseCursive"),
+    ].every((btn) => {
+      return btn.checked == false;
+    })
+  ) {
+    document.getElementById("upperCaseNormal").checked = true;
+  }
   document.getElementById("modal").classList.remove("openModal");
 });
+
+document.getElementById("selectAll").addEventListener("click", () => {
+  toggleSelectAllBtn();
+});
+
+function toggleSelectAllBtn() {
+  if (document.getElementById("selectAll").dataset.toggle == "false") {
+    document.getElementById("upperCaseNormal").checked = true;
+    document.getElementById("lowerCaseNormal").checked = true;
+    document.getElementById("numberCharacters").checked = true;
+    document.getElementById("upperCaseCursive").checked = true;
+    document.getElementById("lowerCaseCursive").checked = true;
+    colorSelectAllBtn();
+  } else {
+    document.getElementById("lowerCaseNormal").checked = false;
+    document.getElementById("numberCharacters").checked = false;
+    document.getElementById("upperCaseCursive").checked = false;
+    document.getElementById("lowerCaseCursive").checked = false;
+    colorSelectAllBtn();
+  }
+}
+
+let cbArray = [
+  document.getElementById("upperCaseNormal"),
+  document.getElementById("lowerCaseNormal"),
+  document.getElementById("numberCharacters"),
+  document.getElementById("upperCaseCursive"),
+  document.getElementById("lowerCaseCursive"),
+];
+
+cbArray.forEach((btn) => {
+  btn.addEventListener("change", () => {
+    colorSelectAllBtn();
+    let allUnChecked = cbArray.every((btn) => {
+      return btn.checked == false;
+    });
+    if (allUnChecked) {
+      document.getElementById("upperCaseNormal").checked = true;
+    }
+  });
+});
+
+function colorSelectAllBtn() {
+  let allChecked = [
+    document.getElementById("upperCaseNormal"),
+    document.getElementById("lowerCaseNormal"),
+    document.getElementById("numberCharacters"),
+    document.getElementById("upperCaseCursive"),
+    document.getElementById("lowerCaseCursive"),
+  ].every((btn) => {
+    return btn.checked == true;
+  });
+
+  if (allChecked) {
+    document.getElementById("selectAll").dataset.toggle = true;
+    document.getElementById("selectAll").classList.add("toggled");
+  } else {
+    document.getElementById("selectAll").dataset.toggle = false;
+    document.getElementById("selectAll").classList.remove("toggled");
+  }
+}
 
 function init() {
   let ucNorm = fetch("./json/upperCaseLetters.json").then((response) => {
@@ -54,11 +128,11 @@ function init() {
     return response.json();
   });
 
-  let lcCursive = fetch("./json/lowerCaseCursive.json").then((response) => {
+  let ucCursive = fetch("./json/upperCaseCursive.json").then((response) => {
     return response.json();
   });
 
-  let ucCursive = fetch("./json/upperCaseCursive.json").then((response) => {
+  let lcCursive = fetch("./json/lowerCaseCursive.json").then((response) => {
     return response.json();
   });
 
@@ -66,7 +140,7 @@ function init() {
     return response.json();
   });
 
-  Promise.all([ucNorm, lcNorm, lcCursive, ucCursive, numCharacters]).then(
+  Promise.all([ucNorm, lcNorm, ucCursive, lcCursive, numCharacters]).then(
     (values) => {
       [
         upperCaseNormal,
@@ -139,7 +213,6 @@ function populateAnswers() {
   let lastUsedObj = {};
   let randomObj = randomQuery(answerArray);
   answer = randomObj;
-  //let speech = new SpeechSynthesisUtterance(randomObj.msg);
 
   choiceArray.map((choice, i, array) => {
     if (i != 0) {
