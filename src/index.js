@@ -16,6 +16,7 @@ let numberCharacters = {};
 let answer = "";
 
 choice.addEventListener("click", () => {
+  if (synth.speaking) return;
   document.querySelectorAll(".userChoice").forEach((element) => {
     element.classList.remove("correct");
     element.classList.remove("error");
@@ -26,6 +27,7 @@ choice.addEventListener("click", () => {
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
+    if (synth.speaking) return;
     if (e.target.dataset.check == answer.check) {
       e.target.classList.add("correct");
       speak("That's right!");
@@ -174,10 +176,12 @@ function filterUsed(characters, exclusion) {
 }
 
 function speak(textToSpeak) {
-  let voices = synth.getVoices();
-  let speech = new SpeechSynthesisUtterance(textToSpeak);
-  speech.voice = voices[englishVoice];
-  speechSynthesis.speak(speech);
+  if (!synth.speaking) {
+    let voices = synth.getVoices();
+    let speech = new SpeechSynthesisUtterance(textToSpeak);
+    speech.voice = voices[englishVoice];
+    speechSynthesis.speak(speech);
+  }
 }
 
 function populateAnswers() {

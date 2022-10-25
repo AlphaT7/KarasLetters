@@ -91,23 +91,23 @@ div {
 #openModal {
   position: relative;
   float: right;
-  font-size: 0.7em;
+  font-size: 2em;
   color: rgb(100, 61, 136);
   padding: 5px;
   border-radius: 10px;
   background: rgb(231, 206, 255);
-  border: 2px solid rgb(178, 102, 250);
+  border: 2px solid #643d88;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
+  box-shadow: 1px 1px 5px -1px #000;
 }
 
 #closeModal {
   position: relative;
   float: right;
-  font-size: 0.5em;
+  font-size: 2em;
   color: #fff;
-  margin: 10px;
   font-weight: bold;
   padding: 5px;
   border-radius: 10px;
@@ -140,10 +140,19 @@ div {
   grid-area: a;
   width: 100%;
   height: 75px;
-  background: rgb(100, 61, 136);
-  color: rgb(231, 206, 255);
-  padding: 0.25em;
-  font-size: 3em;
+  background: rgb(231, 206, 255);
+  padding: 1em;
+}
+
+#wrapperTitle div:nth-child(1) {
+  float: left;
+  font: bold 2.5em arial, sans-serif;
+  background-color: rgb(100, 61, 136);
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
 }
 
 #top {
@@ -202,9 +211,19 @@ div {
   width: 100%;
   height: 75px;
   background: #86c6cd;
-  font-size: 3em;
-  padding: 0.15em;
+  padding: 0.8em;
   color: #fff;
+}
+
+#modalTitle div:nth-child(1) {
+  float: left;
+  font: bold 3em arial, sans-serif;
+  background-color: rgb(61, 136, 123);
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
 }
 
 #letterSettings {
@@ -254,6 +273,7 @@ div {
   -webkit-user-select: none;
   user-select: none;
   transition: 1s all;
+  text-shadow: 0px 2px 3px #000;
 }
 
 .toggled {
@@ -354,6 +374,7 @@ button:active {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border: 1px solid rgb(61, 136, 123);
+  box-shadow: inset 2px 2px 7px -2px #000;
 }
 
 .slider:before {
@@ -367,6 +388,7 @@ button:active {
   background-color: #86c6cd;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  box-shadow: 1px 1px 5px -1px #000000;
 }
 
 input:checked + .slider {
@@ -374,7 +396,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #86c6cd;
+  box-shadow: inset 2px 2px 7px -2px #000;
 }
 
 input:checked + .slider:before {
@@ -382,7 +404,6 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
   color: #fff;
-  /* color: #46887b; */
 }
 
 /* Rounded sliders */
@@ -399,24 +420,29 @@ input:checked + .slider:before {
 
 #slider1::before {
   content: "A";
+  text-shadow: 0px 1px 2px #000;
 }
 
 #slider2::before {
   content: "a";
+  text-shadow: 0px 1px 2px #000;
 }
 
 #slider3::before {
   content: "1";
+  text-shadow: 0px 1px 2px #000;
 }
 
 #slider4::before {
   content: "A";
   font-weight: bold;
   font-family: "HerrVonMuellerhoff";
+  text-shadow: 0px 1px 2px #000;
 }
 
 #slider5::before {
   content: "a";
   font-weight: bold;
   font-family: "HerrVonMuellerhoff";
+  text-shadow: 0px 1px 2px #000;
 }
