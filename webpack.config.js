@@ -5,7 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
-  //mode: "production",
+  // mode: "production",
   devtool: "inline-source-map",
   target: "web",
   stats: {

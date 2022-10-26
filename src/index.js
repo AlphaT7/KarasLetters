@@ -34,13 +34,24 @@ document.querySelectorAll(".userChoice").forEach((element) => {
     } else {
       e.target.classList.add("error");
       speak("Incorrect!");
-      speak(answer.msg);
     }
   });
 });
 
 document.getElementById("openModal").addEventListener("click", (e) => {
   document.getElementById("modal").classList.add("openModal");
+});
+
+document.querySelectorAll(".gridBtn").forEach((btn) => {
+  btn.addEventListener("mouseenter", (e) => {
+    e.target.style.zIndex = 100;
+  });
+  btn.addEventListener("mouseleave", (e) => {
+    e.target.style.zIndex = 0;
+  });
+  btn.addEventListener("click", (event) => {
+    event.target.style.zIndex = 100;
+  });
 });
 
 document.getElementById("closeModal").addEventListener("click", () => {
