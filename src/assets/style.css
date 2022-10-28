@@ -105,6 +105,7 @@ div {
   -webkit-user-select: none;
   user-select: none;
   box-shadow: 1px 1px 5px -1px #000;
+  box-shadow: 3px 3px 10px 0px rgb(0 0 0 / 37%);
 }
 
 #closeModal {
@@ -120,6 +121,7 @@ div {
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
+  box-shadow: 3px 3px 10px 0px rgb(0 0 0 / 37%);
 }
 
 #wrapper {
@@ -277,12 +279,13 @@ div {
   -webkit-user-select: none;
   user-select: none;
   transition: 1s all;
-  text-shadow: 0px 2px 3px #000;
+  box-shadow: 2px 2px 5px 0px rgb(0 0 0/ 37%);
 }
 
 .toggled {
   color: #fff !important;
   background: #6aa9b0 !important;
+  text-shadow: 0px 2px 5px rgb(0 0 0 / 55%);
 }
 
 /* ------ buttons ------ */
@@ -408,6 +411,7 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
   color: #fff;
+  text-shadow: 0px 1px 2px #000;
 }
 
 /* Rounded sliders */
@@ -424,29 +428,24 @@ input:checked + .slider:before {
 
 #slider1::before {
   content: "A";
-  text-shadow: 0px 1px 2px #000;
 }
 
 #slider2::before {
   content: "a";
-  text-shadow: 0px 1px 2px #000;
 }
 
 #slider3::before {
   content: "1";
-  text-shadow: 0px 1px 2px #000;
 }
 
 #slider4::before {
   content: "A";
   font-weight: bold;
   font-family: "HerrVonMuellerhoff";
-  text-shadow: 0px 1px 2px #000;
 }
 
 #slider5::before {
   content: "a";
   font-weight: bold;
   font-family: "HerrVonMuellerhoff";
-  text-shadow: 0px 1px 2px #000;
 }
