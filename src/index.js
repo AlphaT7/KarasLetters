@@ -1,6 +1,8 @@
+import * as IDB from "idb-keyval";
+import * as Pako from "pako";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
-// english voice is array item # 10 if it's ios; 4 if windows/android;
+// english voice is array item # 10 if it's ios; # 4 if windows/android;
 const englishVoice = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? 10 : 4;
 
 let choice = document.getElementById("speakBtn");
@@ -13,7 +15,48 @@ let lowerCaseNormal = {};
 let upperCaseCursive = {};
 let lowerCaseCursive = {};
 let numberCharacters = {};
+let audioCtx = new AudioContext();
+//let gameTune = new AudioBufferSourceNode(audioCtx, { loop: true });
+let gameTune = {};
 let answer = "";
+let deferredPrompt;
+
+IDB.get("isInstalled").then((val) => {
+  if (val) {
+    document.getElementById("installApp").innerHTML =
+      "<div>download_done</div>";
+    document.getElementById("installApp").classList.add("toggled");
+  } else {
+    log({ isInstalled: false });
+  }
+});
+
+// if (window.matchMedia("(display-mode: standalone)").matches) {
+//   // check if is installed as a pwa application
+//   document.getElementById("installApp").innerHTML = "<div>download_done</div>";
+// }
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  // Prevents the default mini-infobar or install dialog from appearing on mobile
+  e.preventDefault();
+  // Save the event because you'll need to trigger it later.
+  deferredPrompt = e;
+  // Show your customized install prompt for your PWA
+  // Your own UI doesn't have to be a single element, you
+  // can have buttons in different locations, or wait to prompt
+  // as part of a critical journey.
+  //showInAppInstallPromotion();
+  document.getElementById("installApp").addEventListener("click", async () => {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome == "accepted") {
+      IDB.set("isInstalled", true);
+      document.getElementById("installApp").innerHTML =
+        "<div>download_done</div>";
+      document.getElementById("installApp").classList.add("toggled");
+    }
+  });
+});
 
 choice.addEventListener("click", () => {
   if (synth.speaking) return;
@@ -36,6 +79,18 @@ document.querySelectorAll(".userChoice").forEach((element) => {
       speak("Incorrect!");
     }
   });
+});
+
+document.getElementById("playMusic").addEventListener("click", (e) => {
+  if (!e.target.checked) {
+    gameTune.currentTime = audioCtx.currentTime;
+    gameTune.node.stop();
+  } else {
+    gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
+    gameTune.node.buffer = gameTune.audioBuffer;
+    gameTune.node.connect(audioCtx.destination);
+    gameTune.node.start();
+  }
 });
 
 document.getElementById("openModal").addEventListener("click", (e) => {
@@ -133,6 +188,19 @@ function colorSelectAllBtn() {
 }
 
 function init() {
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          console.log("SW registered: ", registration);
+        })
+        .catch((registrationError) => {
+          console.log("SW registration failed: ", registrationError);
+        });
+    });
+  }
+
   let ucNorm = fetch("./json/upperCaseLetters.json").then((response) => {
     return response.json();
   });
@@ -153,23 +221,31 @@ function init() {
     return response.json();
   });
 
-  Promise.all([ucNorm, lcNorm, ucCursive, lcCursive, numCharacters]).then(
-    (values) => {
+  let tune = fetch("./audio/karasletters.mp3").then((response) => {
+    return response.arrayBuffer();
+  });
+
+  Promise.all([ucNorm, lcNorm, ucCursive, lcCursive, numCharacters, tune])
+    .then((rs) => {
       [
         upperCaseNormal,
         lowerCaseNormal,
         upperCaseCursive,
         lowerCaseCursive,
         numberCharacters,
-      ] = [
-        values[0].data,
-        values[1].data,
-        values[2].data,
-        values[3].data,
-        values[4].data,
-      ];
-    }
-  );
+      ] = [rs[0].data, rs[1].data, rs[2].data, rs[3].data, rs[4].data];
+      return rs[5];
+    })
+    .then((rs) => {
+      return audioCtx.decodeAudioData(rs);
+    })
+    .then((rs) => {
+      gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
+      gameTune.audioBuffer = rs;
+      gameTune.node.buffer = gameTune.audioBuffer;
+      gameTune.node.connect(audioCtx.destination);
+      document.getElementById("loading").style.display = "none";
+    });
 }
 
 function randomQuery(objArray) {

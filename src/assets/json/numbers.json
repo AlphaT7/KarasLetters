@@ -1,127 +1,127 @@
 {
   "data": [
     {
-      "msg": "Please choose the number '0'.",
+      "msg": "Please choose the number: 0.",
       "character": 0,
       "cursive": false,
       "check": "num-0"
     },
     {
-      "msg": "Please choose the number '1'.",
+      "msg": "Please choose the number: 1.",
       "character": 1,
       "cursive": false,
       "check": "num-1"
     },
     {
-      "msg": "Please choose the number '2'.",
+      "msg": "Please choose the number: 2.",
       "character": 2,
       "cursive": false,
       "check": "num-2"
     },
     {
-      "msg": "Please choose the number '3'.",
+      "msg": "Please choose the number: 3.",
       "character": 3,
       "cursive": false,
       "check": "num-3"
     },
     {
-      "msg": "Please choose the number '4'.",
+      "msg": "Please choose the number: 4.",
       "character": 4,
       "cursive": false,
       "check": "num-4"
     },
     {
-      "msg": "Please choose the number '5'.",
+      "msg": "Please choose the number: 5.",
       "character": 5,
       "cursive": false,
       "check": "num-5"
     },
     {
-      "msg": "Please choose the number '6'.",
+      "msg": "Please choose the number: 6.",
       "character": 6,
       "cursive": false,
       "check": "num-6"
     },
     {
-      "msg": "Please choose the number '7'.",
+      "msg": "Please choose the number: 7.",
       "character": 7,
       "cursive": false,
       "check": "num-7"
     },
     {
-      "msg": "Please choose the number '8'.",
+      "msg": "Please choose the number: 8.",
       "character": 8,
       "cursive": false,
       "check": "num-8"
     },
     {
-      "msg": "Please choose the number '9'.",
+      "msg": "Please choose the number: 9.",
       "character": 9,
       "cursive": false,
       "check": "num-9"
     },
     {
-      "msg": "Please choose the number '10'.",
+      "msg": "Please choose the number: 10.",
       "character": 10,
       "cursive": false,
       "check": "num-10"
     },
     {
-      "msg": "Please choose the number '11'.",
+      "msg": "Please choose the number: 11.",
       "character": 11,
       "cursive": false,
       "check": "num-11"
     },
     {
-      "msg": "Please choose the number '12'.",
+      "msg": "Please choose the number: 12.",
       "character": 12,
       "cursive": false,
       "check": "num-12"
     },
     {
-      "msg": "Please choose the number '13'.",
+      "msg": "Please choose the number: 13.",
       "character": 13,
       "cursive": false,
       "check": "num-13"
     },
     {
-      "msg": "Please choose the number '14'.",
+      "msg": "Please choose the number: 14.",
       "character": 14,
       "cursive": false,
       "check": "num-14"
     },
     {
-      "msg": "Please choose the number '15'.",
+      "msg": "Please choose the number: 15.",
       "character": 15,
       "cursive": false,
       "check": "num-15"
     },
     {
-      "msg": "Please choose the number '16'.",
+      "msg": "Please choose the number: 16.",
       "character": 16,
       "cursive": false,
       "check": "num-16"
     },
     {
-      "msg": "Please choose the number '17'.",
+      "msg": "Please choose the number: 17.",
       "character": 17,
       "cursive": false,
       "check": "num-17"
     },
     {
-      "msg": "Please choose the number '18'.",
+      "msg": "Please choose the number: 18.",
       "character": 18,
       "cursive": false,
       "check": "num-18"
     },
     {
-      "msg": "Please choose the number '19'.",
+      "msg": "Please choose the number: 19.",
       "character": 19,
       "cursive": false,
       "check": "num-19"
     },
     {
-      "msg": "Please choose the number '20'.",
+      "msg": "Please choose the number: 20.",
       "character": 20,
       "cursive": false,
       "check": "num-20"

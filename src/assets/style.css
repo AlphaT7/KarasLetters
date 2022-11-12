@@ -1,17 +1,6 @@
 @font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
-    url(./fonts/MaterialIcons-Regular.ttf) format("truetype");
-}
-
-@font-face {
   font-family: "HerrVonMuellerhoff";
-  font-style: normal;
-  font-weight: 400;
-  src: local("HerrVonMuellerhoff"), local("HerrVonMuellerhoff-Regular"),
-    url(./fonts/HerrVonMuellerhoff-Regular.ttf) format("truetype");
+  src: url(./fonts/HerrVonMuellerhoff-Regular.ttf) format("truetype");
 }
 
 html,
@@ -32,31 +21,6 @@ div {
 
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: "liga";
 }
 
 .cursive {
@@ -90,6 +54,17 @@ div {
   -webkit-user-select: none;
   user-select: none;
   width: 50%;
+}
+
+#loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 35%;
+  text-align: center;
+  font-size: 3em;
+  background: #fff;
+  z-index: 3;
 }
 
 #openModal {
@@ -265,7 +240,9 @@ div {
   padding-left: 20px;
 }
 
-#selectAll {
+#selectAll,
+#installApp {
+  font-family: "Material Icons";
   position: relative;
   font-size: 1em;
   color: rgb(61, 136, 123);
@@ -426,6 +403,11 @@ input:checked + .slider:before {
   margin: -2px;
 }
 
+#slider0::before {
+  font-family: "Material Icons";
+  content: "music_note";
+}
+
 #slider1::before {
   content: "A";
 }
@@ -449,3 +431,11 @@ input:checked + .slider:before {
   font-weight: bold;
   font-family: "HerrVonMuellerhoff";
 }
+/* 
+@media all and (display-mode: standalone) {
+  #installApp {
+    color: #fff !important;
+    background: #6aa9b0 !important;
+    text-shadow: 0px 2px 5px rgb(0 0 0 / 55%);
+  }
+} */

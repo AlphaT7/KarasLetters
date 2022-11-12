@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <title>Kara's Letters</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="manifest" href="./assets/site.webmanifest" />
+    <link
+      rel="apple-touch-icon image_src"
+      href="./assets/images/favicon-32x32.png"
+    />
   </head>
   <body>
+    <div id="loading">Loading...</div>
     <div id="modal">
       <div id="modalTitle">
         <div>Settings</div>
@@ -16,6 +26,21 @@
       </div>
       <div id="letterSettings">
         <table>
+          <tr>
+            <td>Install App</td>
+            <td>
+              <div data-install="false" id="installApp" class="material-icons">
+                <div>install_mobile</div>
+              </div>
+            </td>
+          </tr>
+          <td><label for="playMusic">Play Music</label></td>
+          <td>
+            <label for="playMusic" class="switch">
+              <input type="checkbox" id="playMusic" />
+              <span id="slider0" class="slider round"></span>
+            </label>
+          </td>
           <tr>
             <td>Select All</td>
             <td>
@@ -43,7 +68,7 @@
             </td>
           </tr>
           <tr>
-            <td><label for="numberCharacters">Numbers</label></td>
+            <td><label for="numberCharacters">Numbers { 0 - 20 }</label></td>
             <td>
               <label for="numberCharacters" class="switch">
                 <input type="checkbox" id="numberCharacters" />
