@@ -1,5 +1,4 @@
 import * as IDB from "idb-keyval";
-import * as Pako from "pako";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
 // english voice is array item # 10 if it's ios; # 4 if windows/android;
@@ -16,7 +15,6 @@ let upperCaseCursive = {};
 let lowerCaseCursive = {};
 let numberCharacters = {};
 let audioCtx = new AudioContext();
-//let gameTune = new AudioBufferSourceNode(audioCtx, { loop: true });
 let gameTune = {};
 let answer = "";
 let deferredPrompt;
@@ -26,26 +24,19 @@ IDB.get("isInstalled").then((val) => {
     document.getElementById("installApp").innerHTML =
       "<div>download_done</div>";
     document.getElementById("installApp").classList.add("toggled");
-  } else {
-    log({ isInstalled: false });
   }
 });
-
-// if (window.matchMedia("(display-mode: standalone)").matches) {
-//   // check if is installed as a pwa application
-//   document.getElementById("installApp").innerHTML = "<div>download_done</div>";
-// }
 
 window.addEventListener("beforeinstallprompt", (e) => {
   // Prevents the default mini-infobar or install dialog from appearing on mobile
   e.preventDefault();
   // Save the event because you'll need to trigger it later.
   deferredPrompt = e;
-  // Show your customized install prompt for your PWA
-  // Your own UI doesn't have to be a single element, you
-  // can have buttons in different locations, or wait to prompt
-  // as part of a critical journey.
-  //showInAppInstallPromotion();
+
+  IDB.set("isInstalled", false);
+  document.getElementById("installApp").innerHTML = "<div>install_mobile</div>";
+  document.getElementById("installApp").classList.remove("toggled");
+
   document.getElementById("installApp").addEventListener("click", async () => {
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
@@ -201,28 +192,43 @@ function init() {
     });
   }
 
-  let ucNorm = fetch("./json/upperCaseLetters.json").then((response) => {
+  let ucNorm = fetch("./assets/json/upperCaseLetters.json").then((response) => {
     return response.json();
   });
 
-  let lcNorm = fetch("./json/lowerCaseLetters.json").then((response) => {
+  let lcNorm = fetch("./assets/json/lowerCaseLetters.json").then((response) => {
     return response.json();
   });
 
-  let ucCursive = fetch("./json/upperCaseCursive.json").then((response) => {
+  let ucCursive = fetch("./assets/json/upperCaseCursive.json").then(
+    (response) => {
+      return response.json();
+    }
+  );
+
+  let lcCursive = fetch("./assets/json/lowerCaseCursive.json").then(
+    (response) => {
+      return response.json();
+    }
+  );
+
+  let numCharacters = fetch("./assets/json/numbers.json").then((response) => {
     return response.json();
   });
 
-  let lcCursive = fetch("./json/lowerCaseCursive.json").then((response) => {
-    return response.json();
-  });
-
-  let numCharacters = fetch("./json/numbers.json").then((response) => {
-    return response.json();
-  });
-
-  let tune = fetch("./audio/karasletters.mp3").then((response) => {
-    return response.arrayBuffer();
+  let tune = IDB.get("tune").then((rs) => {
+    return (
+      rs ??
+      fetch("./assets/audio/karasletters.mp3")
+        .then((response) => {
+          return response.blob();
+        })
+        .then((rs) => {
+          return IDB.set("tune", rs).then(() => {
+            return rs;
+          });
+        })
+    );
   });
 
   Promise.all([ucNorm, lcNorm, ucCursive, lcCursive, numCharacters, tune])
@@ -236,15 +242,25 @@ function init() {
       ] = [rs[0].data, rs[1].data, rs[2].data, rs[3].data, rs[4].data];
       return rs[5];
     })
+
+    .then((rs) => {
+      return rs.arrayBuffer();
+    })
+
     .then((rs) => {
       return audioCtx.decodeAudioData(rs);
     })
+
     .then((rs) => {
       gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
       gameTune.audioBuffer = rs;
       gameTune.node.buffer = gameTune.audioBuffer;
       gameTune.node.connect(audioCtx.destination);
-      document.getElementById("loading").style.display = "none";
+      document.getElementById("loading").innerHTML =
+        "<span class='loader'></span>";
+      document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {
+        document.getElementById("loading").style.display = "none";
+      });
     });
 }
 

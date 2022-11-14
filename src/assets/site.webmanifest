@@ -1,7 +1,7 @@
 {
   "name": "Kara's Letters",
   "short_name": "karasletters",
-  "start_url": "http://localhost:3000",
+  "start_url": "../",
   "icons": [
     {
       "src": "./images/android-chrome-192x192.png",
@@ -28,7 +28,7 @@
     },
     {
       "src": "./images/application_settings.png",
-      "sizes": "1081x2340",
+      "sizes": "500x1082",
       "type": "image/png"
     }
   ]

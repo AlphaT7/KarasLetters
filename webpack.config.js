@@ -45,9 +45,13 @@ module.exports = {
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
+      exclude: [/audio/],
+      maximumFileSizeToCacheInBytes: 5000000,
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => url.origin === "http://localhost:3000",
+          //urlPattern: ({ url }) => url.origin === "https://karasletters-abb2b.web.app/",
+          urlPattern: ({ url }) => url.origin === "http://localhost:3000/",
+
           //handler: "NetworkFirst",
           handler: "StaleWhileRevalidate",
           options: {
