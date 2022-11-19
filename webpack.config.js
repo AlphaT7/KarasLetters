@@ -51,12 +51,10 @@ module.exports = {
         {
           //urlPattern: ({ url }) => url.origin === "https://karasletters-abb2b.web.app/",
           urlPattern: ({ url }) => url.origin === "http://localhost:3000/",
-
-          //handler: "NetworkFirst",
-          handler: "StaleWhileRevalidate",
+          handler: "NetworkFirst",
           options: {
             cacheName: "WW-AppCache",
-            //networkTimeoutSeconds: 4,
+            networkTimeoutSeconds: 4,
           },
         },
       ],

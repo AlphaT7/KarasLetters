@@ -79,7 +79,9 @@ document.getElementById("playMusic").addEventListener("click", (e) => {
   } else {
     gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
     gameTune.node.buffer = gameTune.audioBuffer;
-    gameTune.node.connect(audioCtx.destination);
+    gameTune.gainNode = audioCtx.createGain();
+    gameTune.gainNode.gain.value = 0.15;
+    gameTune.node.connect(gameTune.gainNode).connect(audioCtx.destination);
     gameTune.node.start();
   }
 });
@@ -252,10 +254,7 @@ function init() {
     })
 
     .then((rs) => {
-      gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
       gameTune.audioBuffer = rs;
-      gameTune.node.buffer = gameTune.audioBuffer;
-      gameTune.node.connect(audioCtx.destination);
       document.getElementById("loading").innerHTML =
         "<span class='loader'></span>";
       document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {

@@ -26,7 +26,6 @@
   "dependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "firebase": "^9.12.1",
-    "idb-keyval": "^6.2.0",
-    "pako": "^2.0.4"
+    "idb-keyval": "^6.2.0"
   }
 }
