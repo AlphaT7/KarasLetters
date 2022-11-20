@@ -1,4 +1,5 @@
 import * as IDB from "idb-keyval";
+import * as Toast from "@brenoroosevelt/toast/lib/esm/toast.js";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
 // english voice is array item # 10 if it's ios; # 4 if windows/android;
@@ -18,6 +19,17 @@ let audioCtx = new AudioContext();
 let gameTune = {};
 let answer = "";
 let deferredPrompt;
+
+console.error = (...args) => {
+  Toast.error(...args, {
+    title: "Error",
+    position: "top",
+    align: "center",
+    duration: 0,
+  });
+};
+
+console.error("Custom Test Error");
 
 IDB.get("isInstalled").then((val) => {
   if (val) {

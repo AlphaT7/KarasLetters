@@ -16,6 +16,19 @@
       rel="apple-touch-icon image_src"
       href="./assets/images/favicon-32x32.png"
     />
+    <script src="./assets/toast.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.error = (...args) => {
+          error(...args, {
+            title: "Error",
+            position: "bottom",
+            align: "center",
+            duration: 0,
+          });
+        };
+      });
+    </script>
   </head>
   <body>
     <div id="loading"><div class="loader1"></div></div>

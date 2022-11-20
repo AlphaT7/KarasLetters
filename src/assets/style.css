@@ -116,7 +116,6 @@ div {
     "c d"
     "e f"
     "g g";
-  z-index: 1;
   overflow: hidden;
 }
 
@@ -196,10 +195,10 @@ div {
   height: 100%;
   background: rgba(255, 255, 255, 0.75);
   background: #444;
-  z-index: 2;
+  z-index: 200;
   transition: all 0.35s;
   left: -100%;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .openModal {
