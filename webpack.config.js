@@ -13,13 +13,17 @@ module.exports = {
   stats: {
     children: true,
   },
+  stats: { warnings: false },
   devServer: {
+    client: {
+      overlay: false,
+    },
     static: ["src/assets"],
     compress: true,
     hot: false,
     host: "0.0.0.0",
     port: 3000,
-    liveReload: false,
+    liveReload: true,
   },
   // watchOptions: {
   // Check for changes every second

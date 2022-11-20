@@ -98,12 +98,13 @@ div {
   box-shadow: 3px 3px 10px 0px rgb(0 0 0 / 37%);
 }
 
-#wrapper {
+#mainWrapper {
   margin: 0 auto;
+  position: relative;
   padding: 0;
   width: 100%;
   max-width: 500px;
-  height: 500px;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -113,7 +114,24 @@ div {
     "a a"
     "b b"
     "c d"
-    "e f";
+    "e f"
+    "g g";
+  z-index: 1;
+  overflow: hidden;
+}
+
+#logo {
+  grid-area: g;
+  align-items: end;
+  align-self: end;
+  justify-items: center;
+  height: 10em;
+  display: grid;
+}
+
+#logo img {
+  width: 50%;
+  height: auto;
 }
 
 #wrapperTitle {
@@ -177,13 +195,16 @@ div {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.75);
+  background: #444;
   z-index: 2;
   transition: all 0.35s;
-  left: 100%;
+  left: -100%;
+  opacity: 0;
 }
 
 .openModal {
   left: 0 !important;
+  opacity: 1 !important;
 }
 
 #modalTitle {
@@ -206,36 +227,36 @@ div {
   background-clip: text;
 }
 
-#letterSettings {
+#settingsWrapper {
   margin: 0 auto;
   width: 100%;
   height: calc(100% - 75px);
 }
 
-#letterSettings table {
+#settingsWrapper table {
   width: 100%;
   height: 100%;
   font-size: 1.5em;
   color: silver;
 }
 
-#letterSettings table tr {
+#settingsWrapper table tr {
   border-top: 1px solid rgba(191, 123, 255, 0.781);
   background: #86a3cd;
   background: #fff;
   font-weight: bold;
 }
 
-#letterSettings table tr td {
+#settingsWrapper table tr td {
   padding: 0.5em;
   width: max-content;
 }
 
-#letterSettings table tr td:nth-child(even) {
+#settingsWrapper table tr td:nth-child(even) {
   text-align: center;
 }
 
-#letterSettings table tr td:nth-child(odd) {
+#settingsWrapper table tr td:nth-child(odd) {
   padding-left: 20px;
 }
 
@@ -545,6 +566,71 @@ input:checked + .slider:before {
   }
 }
 
+/**** Tabs CSS ****/
+
+.settingsContent {
+  border-top: 1px solid #ddd;
+  width: 100%;
+  height: calc(100% - 45px);
+}
+
+#tabsWrapper {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#tabsWrapper > input {
+  display: none;
+}
+
+#tabsWrapper > label {
+  display: inline-block;
+  margin: 0 0 -2px;
+  padding: 15px 25px;
+  height: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+#tabsWrapper > label:before {
+  font-family: "Material Icons";
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+#tabsWrapper > label[for*="1"]:before {
+  content: "\e429";
+}
+
+#tabsWrapper > label[for*="2"]:before {
+  content: "\f02e";
+}
+
+#tabsWrapper > label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+#tabsWrapper > input:checked + label {
+  color: #fff;
+  border-bottom: 3px solid orange;
+}
+
+#content1,
+#content2 {
+  display: none;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2 {
+  display: block;
+}
+
+/*Interesting CSS to determine if application is installed or not as pwa;*/
 /* 
 @media all and (display-mode: standalone) {
   #installApp {
