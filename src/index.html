@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
-    <title>Kara's Letters</title>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/style.css" />
-    <link rel="manifest" href="./assets/site.webmanifest" />
-    <link
-      rel="apple-touch-icon image_src"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <script src="./assets/toast.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        console.error = (...args) => {
-          error(...args, {
-            title: "Error",
-            position: "bottom",
-            align: "center",
-            duration: 0,
-          });
-        };
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
+  <title>Kara's Letters</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/style.css" />
+  <link rel="manifest" href="./assets/site.webmanifest" />
+  <link rel="apple-touch-icon image_src" href="./assets/images/favicon-32x32.png" />
+  <script src="./assets/toast.js"></script>
+  <script>
+    // Needed for pre-document loaded mobile friendly error logging
+    document.addEventListener("DOMContentLoaded", () => {
+      console.error = (...args) => {
+        error(...args, {
+          title: "Error",
+          position: "bottom",
+          align: "center",
+          duration: 0,
+        });
+      };
+    });
+    // Needed for post-document loaded mobile friendly error logging
+    console.error = (...args) => {
+      error(...args, {
+        title: "Error",
+        position: "top",
+        align: "center",
+        duration: 0,
       });
-    </script>
-  </head>
-  <body>
-    <div id="loading"><div class="loader1"></div></div>
+    };
+  </script>
+</head>
 
-    <div id="mainWrapper">
-      <div id="modal">
-        <div id="modalTitle">
-          <div>Settings</div>
-          <div id="closeModal" class="material-icons">close</div>
-        </div>
-        <div id="settingsWrapper">
-          <div id="tabsWrapper">
-            <input id="tab1" type="radio" name="tabs" checked />
-            <label for="tab1">Config</label>
+<body>
+  <div id="loading">
+    <div class="loader1"></div>
+  </div>
 
-            <input id="tab2" type="radio" name="tabs" />
-            <label for="tab2">Users</label>
+  <div id="mainWrapper">
+    <div id="modal">
+      <div id="modalTitle">
+        <div>Settings</div>
+        <div id="closeModal" class="btn material-icons">close</div>
+      </div>
+      <div id="settingsWrapper">
+        <div id="tabsWrapper">
+          <input id="tab1" type="radio" name="tabs" checked />
+          <label for="tab1">Config</label>
 
-            <div class="settingsContent" id="content1">
-              <table>
+          <input id="tab2" type="radio" name="tabs" />
+          <label for="tab2">Users</label>
+
+          <div class="settingsContent" id="content1">
+            <table id="configTable">
+              <tbody>
                 <tr>
                   <td>Install App</td>
                   <td>
-                    <div
-                      data-install="false"
-                      id="installApp"
-                      class="material-icons"
-                    >
+                    <div data-install="false" id="installApp" class="material-icons">
                       <div>install_mobile</div>
                     </div>
                   </td>
@@ -71,11 +76,7 @@
                 <tr>
                   <td>Select All</td>
                   <td>
-                    <div
-                      data-toggle="false"
-                      id="selectAll"
-                      class="material-icons"
-                    >
+                    <div data-toggle="false" id="selectAll" class="material-icons">
                       <div>done_all</div>
                     </div>
                   </td>
@@ -131,35 +132,49 @@
                     </label>
                   </td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="settingsContent" id="content2">
+            <div id="addUser" class="btn addUser">
+              <div class="material-icons">person_add</div>
+              Add User
+            </div>
+            <div id="usersTableScroll">
+              <table id="usersTable">
+                <tbody id="usersTableBody"></tbody>
               </table>
             </div>
-
-            <div class="settingsContent" id="content2"></div>
           </div>
         </div>
       </div>
-      <div id="wrapperTitle">
-        <div>Kara's Letters</div>
-        <div id="openModal" class="material-icons">settings</div>
-      </div>
-      <div id="top">
-        <button id="speakBtn" class="material-icons">record_voice_over</button>
-      </div>
-      <div id="b1" class="gridBtn">
-        <button id="c1" class="userChoice">?</button>
-      </div>
-      <div id="b2" class="gridBtn">
-        <button id="c2" class="userChoice">?</button>
-      </div>
-      <div id="b3" class="gridBtn">
-        <button id="c3" class="userChoice">?</button>
-      </div>
-      <div id="b4" class="gridBtn">
-        <button id="c4" class="userChoice">?</button>
-      </div>
-      <div id="logo">
-        <img alt="logo" src="./assets/images/logo.png" />
-      </div>
     </div>
-  </body>
+    <div id="wrapperTitle">
+      <div>Kara's Letters</div>
+      <button id="openModal" class="btn material-icons">settings</button>
+    </div>
+    <div id="top">
+      <button id="speakBtn" class="userChoice material-icons">
+        record_voice_over
+      </button>
+    </div>
+    <div id="b1" class="gridBtn">
+      <button id="c1" class="userChoice">?</button>
+    </div>
+    <div id="b2" class="gridBtn">
+      <button id="c2" class="userChoice">?</button>
+    </div>
+    <div id="b3" class="gridBtn">
+      <button id="c3" class="userChoice">?</button>
+    </div>
+    <div id="b4" class="gridBtn">
+      <button id="c4" class="userChoice">?</button>
+    </div>
+    <div id="logo">
+      <img alt="logo" src="./assets/images/logo.png" />
+    </div>
+  </div>
+</body>
+
 </html>

@@ -1,5 +1,4 @@
 import * as IDB from "idb-keyval";
-import * as Toast from "@brenoroosevelt/toast/lib/esm/toast.js";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
 // english voice is array item # 10 if it's ios; # 4 if windows/android;
@@ -20,18 +19,8 @@ let gameTune = {};
 let answer = "";
 let deferredPrompt;
 
-console.error = (...args) => {
-  Toast.error(...args, {
-    title: "Error",
-    position: "top",
-    align: "center",
-    duration: 0,
-  });
-};
-
-console.error("Custom Test Error");
-
 IDB.get("isInstalled").then((val) => {
+  // check the IndexedDb to see if the app is installed
   if (val) {
     document.getElementById("installApp").innerHTML =
       "<div>download_done</div>";
@@ -39,12 +28,21 @@ IDB.get("isInstalled").then((val) => {
   }
 });
 
+IDB.get("users").then((users) => {
+  users = users ?? { Karra: true };
+  document.getElementById("speakBtn").dataset.user = Object.keys(users).filter(
+    (key) => {
+      return users[key] == true;
+    }
+  );
+});
+
 window.addEventListener("beforeinstallprompt", (e) => {
   // Prevents the default mini-infobar or install dialog from appearing on mobile
   e.preventDefault();
-  // Save the event because you'll need to trigger it later.
+  // Save the event to use it later.
   deferredPrompt = e;
-
+  log(deferredPrompt);
   IDB.set("isInstalled", false);
   document.getElementById("installApp").innerHTML = "<div>install_mobile</div>";
   document.getElementById("installApp").classList.remove("toggled");
@@ -61,14 +59,14 @@ window.addEventListener("beforeinstallprompt", (e) => {
   });
 });
 
-choice.addEventListener("click", () => {
+choice.addEventListener("click", (e) => {
   if (synth.speaking) return;
   document.querySelectorAll(".userChoice").forEach((element) => {
     element.classList.remove("correct");
     element.classList.remove("error");
     element.classList.remove("cursive");
   });
-  populateAnswers();
+  populateAnswers(e.target.dataset.user);
 });
 
 document.querySelectorAll(".userChoice").forEach((element) => {
@@ -135,6 +133,123 @@ document.getElementById("selectAll").addEventListener("click", () => {
   toggleSelectAllBtn();
 });
 
+document.getElementById("addUser").addEventListener("click", () => {
+  addUser();
+});
+
+function selectUser(user) {
+  IDB.get("users")
+    .then((rs) => {
+      Object.keys(rs).map((key) => {
+        rs[key] = false;
+      });
+      rs[user] = true;
+      return rs;
+    })
+    .then((rs) => {
+      IDB.set("users", rs);
+      return rs;
+    })
+    .then((rs) => {
+      document.getElementById("speakBtn").dataset.user = user;
+      displayUsers(rs);
+    });
+}
+
+function addUser() {
+  let person = prompt("Please enter the user name you wish to add.");
+  if (person.length > 0) {
+    IDB.get("users")
+      .then((rs) => {
+        rs[person] = false;
+        return rs;
+      })
+      .then((rs) => {
+        IDB.set("users", rs);
+        return rs;
+      })
+      .then((rs) => {
+        displayUsers(rs);
+      });
+  }
+}
+
+function editUser(user) {
+  IDB.get("users")
+    .then((rs) => {
+      let person = prompt("Please enter a new user name.");
+      if (person.length != 0) {
+        delete Object.assign(rs, { [person]: rs[user] })[user];
+      }
+      return rs;
+    })
+    .then((rs) => {
+      IDB.set("users", rs);
+      return rs;
+    })
+    .then((rs) => {
+      displayUsers(rs);
+    });
+}
+
+function removeUser(user) {
+  IDB.get("users")
+    .then((rs) => {
+      if (Object.keys(rs).length > 1 && !rs[user]) {
+        let check = confirm(`Are you sure you want to remove user: ${user}?`);
+        if (check) {
+          delete rs[user];
+        }
+      } else {
+        alert("The selected user or last user cannot be removed.");
+      }
+      return rs;
+    })
+    .then((rs) => {
+      IDB.set("users", rs);
+      return rs;
+    })
+    .then((rs) => {
+      displayUsers(rs);
+    });
+}
+
+function displayUsers(users) {
+  users = Object.keys(users)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = users[key];
+      return obj;
+    }, {});
+  document.getElementById("usersTableBody").innerHTML = "";
+  for (const [key, value] of Object.entries(users)) {
+    document.getElementById(
+      "usersTableBody"
+    ).innerHTML += `<tr><td data-user="${key}" class='${
+      value ? "selectedUser" : "unselectedUser"
+    }'>${key}</td>${
+      value
+        ? "<td><div class='material-icons'>done_all</div></td>"
+        : "<td></td>"
+    }<td><div data-user="${key}" class="material-icons editUser">edit</div></td><td><div data-user="${key}" class="material-icons removeUser">person_remove</div></td></tr>`;
+  }
+  document.querySelectorAll(".removeUser").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      removeUser(e.target.dataset.user);
+    });
+  });
+  document.querySelectorAll(".editUser").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      editUser(e.target.dataset.user);
+    });
+  });
+  document.querySelectorAll(".unselectedUser").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      selectUser(e.target.dataset.user);
+    });
+  });
+}
+
 function toggleSelectAllBtn() {
   if (document.getElementById("selectAll").dataset.toggle == "false") {
     document.getElementById("upperCaseNormal").checked = true;
@@ -193,18 +308,19 @@ function colorSelectAllBtn() {
 }
 
 function init() {
-  // if ("serviceWorker" in navigator) {
-  //   window.addEventListener("load", () => {
-  //     navigator.serviceWorker
-  //       .register("/service-worker.js")
-  //       .then((registration) => {
-  //         console.log("SW registered: ", registration);
-  //       })
-  //       .catch((registrationError) => {
-  //         console.log("SW registration failed: ", registrationError);
-  //       });
-  //   });
-  // }
+  // Register the serviceworker for installation and cacheing capabilities
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          console.log("SW registered: ", registration);
+        })
+        .catch((registrationError) => {
+          console.log("SW registration failed: ", registrationError);
+        });
+    });
+  }
 
   let ucNorm = fetch("./assets/json/upperCaseLetters.json").then((response) => {
     return response.json();
@@ -229,6 +345,19 @@ function init() {
   let numCharacters = fetch("./assets/json/numbers.json").then((response) => {
     return response.json();
   });
+
+  let users = IDB.get("users")
+    .then((rs) => {
+      return (
+        rs ??
+        IDB.set("users", { Karra: true }).then(() => {
+          return { Karra: true };
+        })
+      );
+    })
+    .then((rs) => {
+      displayUsers(rs);
+    });
 
   let tune = IDB.get("tune").then((rs) => {
     return (
@@ -298,7 +427,7 @@ function speak(textToSpeak) {
   }
 }
 
-function populateAnswers() {
+function populateAnswers(userName) {
   let answerArray = [];
 
   let cbList = [
@@ -361,7 +490,8 @@ function populateAnswers() {
       lastUsedObj = characterObj;
     }
   });
-  speak("Hello Karra! " + answer.msg);
+  log(userName);
+  speak(`Hello ${userName}! ` + answer.msg);
 }
 
 init();
