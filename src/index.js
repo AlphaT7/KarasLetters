@@ -1,4 +1,5 @@
 import * as IDB from "idb-keyval";
+import { FluidMeter } from "./assets/js-fluid-meter.js";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
 // english voice is array item # 10 if it's ios; # 4 if windows/android;
@@ -8,7 +9,6 @@ let choice = document.getElementById("speakBtn");
 let c1 = document.getElementById("c1");
 let c2 = document.getElementById("c2");
 let c3 = document.getElementById("c3");
-let c4 = document.getElementById("c4");
 let upperCaseNormal = {};
 let lowerCaseNormal = {};
 let upperCaseCursive = {};
@@ -17,6 +17,7 @@ let numberCharacters = {};
 let audioCtx = new AudioContext();
 let gameTune = {};
 let answer = "";
+let score = 0;
 let deferredPrompt;
 
 IDB.get("isInstalled").then((val) => {
@@ -74,9 +75,13 @@ document.querySelectorAll(".userChoice").forEach((element) => {
     if (synth.speaking) return;
     if (e.target.dataset.check == answer.check) {
       e.target.classList.add("correct");
+      score = score + 10 < 100 ? (score += 10) : 100;
+      fm.setPercentage(score);
       speak("That's right!");
     } else {
       e.target.classList.add("error");
+      score = score - 15 > 0 ? (score -= 15) : 0;
+      fm.setPercentage(score);
       speak("Incorrect!");
     }
   });
@@ -102,13 +107,13 @@ document.getElementById("openModal").addEventListener("click", (e) => {
 
 document.querySelectorAll(".gridBtn").forEach((btn) => {
   btn.addEventListener("mouseenter", (e) => {
-    e.target.style.zIndex = 100;
+    e.target.style.zIndex = 2;
   });
   btn.addEventListener("mouseleave", (e) => {
     e.target.style.zIndex = 0;
   });
   btn.addEventListener("click", (event) => {
-    event.target.style.zIndex = 100;
+    event.target.style.zIndex = 2;
   });
 });
 
@@ -177,7 +182,7 @@ function addUser() {
 function editUser(user) {
   IDB.get("users")
     .then((rs) => {
-      let person = prompt("Please enter a new user name.");
+      let person = prompt("Please enter a new user name.", user);
       if (person.length != 0) {
         delete Object.assign(rs, { [person]: rs[user] })[user];
       }
@@ -456,7 +461,7 @@ function populateAnswers(userName) {
 
   let letterList = answerArray;
 
-  let choiceArray = ["", "", "", ""];
+  let choiceArray = ["", "", ""];
   let lastUsedObj = {};
   let randomObj = randomQuery(answerArray);
   answer = randomObj;
@@ -470,7 +475,7 @@ function populateAnswers(userName) {
     }
   });
 
-  [c1, c2, c3, c4].map((btn, i, array) => {
+  [c1, c2, c3].map((btn, i, array) => {
     if (i != 0) {
       choiceArray = filterUsed(choiceArray, lastUsedObj);
       let characterObj = randomCharacter(choiceArray);
@@ -490,8 +495,35 @@ function populateAnswers(userName) {
       lastUsedObj = characterObj;
     }
   });
-  log(userName);
   speak(`Hello ${userName}! ` + answer.msg);
 }
 
 init();
+
+let fm = new FluidMeter();
+fm.init({
+  targetContainer: document.getElementById("fluid-meter"),
+  fillPercentage: 0,
+  options: {
+    drawPercentageSign: false,
+    drawBubbles: true,
+    size: 235,
+    borderWidth: 4,
+    backgroundColor: "#e2e2e2",
+    foregroundColor: "#fafafa",
+    foregroundFluidLayer: {
+      fillStyle: "purple",
+      angularSpeed: 100,
+      maxAmplitude: 12,
+      frequency: 30,
+      horizontalSpeed: -150,
+    },
+    backgroundFluidLayer: {
+      fillStyle: "pink",
+      angularSpeed: 100,
+      maxAmplitude: 9,
+      frequency: 30,
+      horizontalSpeed: 150,
+    },
+  },
+});
