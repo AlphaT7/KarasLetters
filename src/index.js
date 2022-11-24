@@ -244,7 +244,7 @@ function displayUsers(users) {
       "usersTableBody"
     ).innerHTML += `<tr><td data-user="${key}" class='${
       value ? "selectedUser" : "unselectedUser"
-    }'>${key}</td>${
+    }'><div>${key}</div></td>${
       value
         ? "<td><div class='material-icons'>done_all</div></td>"
         : "<td></td>"

@@ -494,7 +494,7 @@ input:checked+.slider:before {
   width: 198px;
   height: 198px;
   border-radius: 50%;
-  border: 5px solid #fff;
+  border: 5px solid rgba(255, 255, 255, .55);
   position: absolute;
   opacity: 0;
   top: 0;
@@ -713,8 +713,14 @@ input:checked+.slider:before {
 }
 
 #usersTableBody tr td:nth-child(1) {
-  width: 100%;
-  max-width: 50%;
+  width: 55%;
+
+}
+
+#usersTableBody tr td:nth-child(1) div {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 150px;
 }
 
 .addUser {
@@ -756,8 +762,15 @@ input:checked+.slider:before {
 
 @media only screen and (max-device-width: 375px) and (max-height: 680px) {
 
+  .slider:before {
+    box-sizing: border-box;
+    height: 28px;
+    width: 28px;
+    padding: 0 0 5px 0;
+  }
+
   #configTable {
-    font-size: .9em;
+    font-size: 1.5em;
   }
 
   #tabsWrapper>label {
@@ -778,6 +791,7 @@ input:checked+.slider:before {
     width: 95px;
     height: 95px;
     font-size: 3.5em;
+    padding: 0 !important;
   }
 
   #fluid-meter {
@@ -786,7 +800,7 @@ input:checked+.slider:before {
   }
 
   #footer img {
-    height: 120px;
+    height: 150px;
     width: auto;
   }
 
