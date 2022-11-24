@@ -11,37 +11,15 @@
   <link rel="stylesheet" href="./assets/style.css" />
   <link rel="manifest" href="./assets/site.webmanifest" />
   <link rel="apple-touch-icon image_src" href="./assets/images/favicon-32x32.png" />
-  <script src="./assets/toast.js"></script>
-  <script>
-    // Needed for pre-document loaded mobile friendly error logging
-    document.addEventListener("DOMContentLoaded", () => {
-      console.error = (...args) => {
-        error(...args, {
-          title: "Error",
-          position: "bottom",
-          align: "center",
-          duration: 0,
-        });
-      };
-    });
-    // Needed for post-document loaded mobile friendly error logging
-    console.error = (...args) => {
-      error(...args, {
-        title: "Error",
-        position: "top",
-        align: "center",
-        duration: 0,
-      });
-    };
-  </script>
+  <script src="./assets/particles.js" defer></script>
 </head>
 
 <body>
   <div id="loading">
-    <div class="loader1"></div>
+    <div class="loader1">Loading</div>
   </div>
-
   <div id="mainWrapper">
+    <div id="particlesWrapper"></div>
     <div id="modal">
       <div id="modalTitle">
         <div>Settings</div>
@@ -54,6 +32,9 @@
 
           <input id="tab2" type="radio" name="tabs" />
           <label for="tab2">Users</label>
+
+          <input id="tab3" type="radio" name="tabs" />
+          <label for="tab3">About</label>
 
           <div class="settingsContent" id="content1">
             <table id="configTable">
@@ -147,6 +128,19 @@
               </table>
             </div>
           </div>
+
+          <div class="settingsContent" id="content3">
+            <div>
+              <p>Kara's Letters is a small mobile friendly learning application written for fun by
+                Jamison at Winters Webs
+              </p>
+              <p>Credit goes to Steven Winters Jr. for the musical tune.</p>
+            </div>
+            <div id="logo">
+              <img alt="logo" src="./assets/images/logo.png" />
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -154,27 +148,17 @@
       <div>Kara's Letters</div>
       <button id="openModal" class="btn material-icons">settings</button>
     </div>
-    <div id="top">
+    <div id="mid">
+      <button id="c1" class="userChoice">?</button>
+      <button id="c2" class="userChoice">?</button>
+      <button id="c3" class="userChoice">?</button>
+      <div id="fluid-meter"></div>
+    </div>
+    <div id="footer">
       <button id="speakBtn" class="btn userChoice material-icons">
         record_voice_over
       </button>
-    </div>
-    <div id="mid">
-      <div id="b1" class="gridBtn">
-        <button id="c1" class="userChoice">?</button>
-      </div>
-      <div id="b2" class="gridBtn">
-        <button id="c2" class="userChoice">?</button>
-      </div>
-      <div id="b3" class="gridBtn">
-        <button id="c3" class="userChoice">?</button>
-      </div>
-      <div id="gameMeter">
-        <div id="fluid-meter"></div>
-      </div>
-    </div>
-    <div id="logo">
-      <img alt="logo" src="./assets/images/logo.png" />
+      <img alt="wizard" src="./assets/images/wizard.png" />
     </div>
   </div>
 </body>

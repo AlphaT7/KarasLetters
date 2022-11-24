@@ -17,6 +17,7 @@ let numberCharacters = {};
 let audioCtx = new AudioContext();
 let gameTune = {};
 let answer = "";
+let answeredCorrectly = false;
 let score = 0;
 let deferredPrompt;
 
@@ -67,6 +68,7 @@ choice.addEventListener("click", (e) => {
     element.classList.remove("error");
     element.classList.remove("cursive");
   });
+  answeredCorrectly = false;
   populateAnswers(e.target.dataset.user);
 });
 
@@ -74,13 +76,23 @@ document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
     if (synth.speaking) return;
     if (e.target.dataset.check == answer.check) {
-      e.target.classList.add("correct");
-      score = score + 10 < 100 ? (score += 10) : 100;
-      fm.setPercentage(score);
+      if (!answeredCorrectly) {
+        e.target.classList.add("correct");
+        score = score + 10 <= 100 ? (score += 10) : 100;
+        fm.setPercentage(score);
+        answeredCorrectly = true;
+      }
+      if (score == 100) {
+        speak("You win! Play again?");
+        if (confirm("You win! Play again?")) {
+          score = 0;
+          fm.setPercentage(score);
+        }
+      }
       speak("That's right!");
     } else {
       e.target.classList.add("error");
-      score = score - 15 > 0 ? (score -= 15) : 0;
+      score = score - 15 >= 0 ? (score -= 15) : 0;
       fm.setPercentage(score);
       speak("Incorrect!");
     }
@@ -402,7 +414,7 @@ function init() {
     .then((rs) => {
       gameTune.audioBuffer = rs;
       document.getElementById("loading").innerHTML =
-        "<span class='loader'></span>";
+        "<div class='loader'>Tap Here!</div>";
       document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {
         document.getElementById("loading").style.display = "none";
       });
@@ -503,13 +515,12 @@ init();
 let fm = new FluidMeter();
 fm.init({
   targetContainer: document.getElementById("fluid-meter"),
-  fillPercentage: 0,
+  fillPercentage: score,
   options: {
     drawPercentageSign: false,
     drawBubbles: true,
-    size: 235,
+    size: window.screen.width > 470 ? 235 : 200,
     borderWidth: 4,
-    backgroundColor: "#e2e2e2",
     foregroundColor: "#fafafa",
     foregroundFluidLayer: {
       fillStyle: "purple",
@@ -526,4 +537,110 @@ fm.init({
       horizontalSpeed: 150,
     },
   },
+});
+
+particlesJS("particlesWrapper", {
+  particles: {
+    number: {
+      value: 150,
+      density: {
+        enable: true,
+        value_area: 789.1476416322727,
+      },
+    },
+    color: {
+      value: "#E7CEFF",
+    },
+    shape: {
+      type: "circle",
+      stroke: {
+        width: 0,
+        color: "#000000",
+      },
+      polygon: {
+        nb_sides: 5,
+      },
+    },
+    opacity: {
+      value: 0.48927153781200905,
+      random: false,
+      anim: {
+        enable: true,
+        speed: 0.2,
+        opacity_min: 0,
+        sync: false,
+      },
+    },
+    size: {
+      value: 2,
+      random: true,
+      anim: {
+        enable: true,
+        speed: 2,
+        size_min: 0,
+        sync: false,
+      },
+    },
+    line_linked: {
+      enable: false,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.4,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 0.2,
+      direction: "none",
+      random: true,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+      attract: {
+        enable: false,
+        rotateX: 600,
+        rotateY: 1200,
+      },
+    },
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: {
+        enable: true,
+        mode: "bubble",
+      },
+      onclick: {
+        enable: true,
+        mode: "push",
+      },
+      resize: true,
+    },
+    modes: {
+      grab: {
+        distance: 400,
+        line_linked: {
+          opacity: 1,
+        },
+      },
+      bubble: {
+        distance: 83.91608391608392,
+        size: 1,
+        duration: 3,
+        opacity: 1,
+        speed: 3,
+      },
+      repulse: {
+        distance: 200,
+        duration: 0.4,
+      },
+      push: {
+        particles_nb: 4,
+      },
+      remove: {
+        particles_nb: 2,
+      },
+    },
+  },
+  retina_detect: true,
 });
