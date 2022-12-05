@@ -15,7 +15,10 @@ let upperCaseCursive = {};
 let lowerCaseCursive = {};
 let numberCharacters = {};
 let audioCtx = new AudioContext();
-let gameTune = {};
+let soundBuffer = {};
+let musicBuffer = {};
+let musicNode = {};
+let musicTimeStamp = {};
 let answer = "";
 let answeredCorrectly = false;
 let score = 0;
@@ -50,6 +53,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
   document.getElementById("installApp").classList.remove("toggled");
 
   document.getElementById("installApp").addEventListener("click", async () => {
+    playSound(soundBuffer.buttonSound, false, 0.25);
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome == "accepted") {
@@ -68,6 +72,7 @@ choice.addEventListener("click", (e) => {
     element.classList.remove("error");
     element.classList.remove("cursive");
   });
+
   answeredCorrectly = false;
   populateAnswers(e.target.dataset.user);
 });
@@ -83,6 +88,7 @@ document.querySelectorAll(".userChoice").forEach((element) => {
         answeredCorrectly = true;
       }
       if (score == 100) {
+        fm.setPercentage(score);
         speak("You win! Play again?");
         if (confirm("You win! Play again?")) {
           score = 0;
@@ -99,25 +105,12 @@ document.querySelectorAll(".userChoice").forEach((element) => {
   });
 });
 
-document.getElementById("playMusic").addEventListener("click", (e) => {
-  if (!e.target.checked) {
-    gameTune.currentTime = audioCtx.currentTime;
-    gameTune.node.stop();
-  } else {
-    gameTune.node = new AudioBufferSourceNode(audioCtx, { loop: true });
-    gameTune.node.buffer = gameTune.audioBuffer;
-    gameTune.gainNode = audioCtx.createGain();
-    gameTune.gainNode.gain.value = 0.15;
-    gameTune.node.connect(gameTune.gainNode).connect(audioCtx.destination);
-    gameTune.node.start();
-  }
-});
-
 document.getElementById("openModal").addEventListener("click", (e) => {
+  playSound(soundBuffer.openMenu, false, 0.25);
   document.getElementById("modal").classList.add("openModal");
 });
 
-document.querySelectorAll(".gridBtn").forEach((btn) => {
+document.querySelectorAll(".userChoice").forEach((btn) => {
   btn.addEventListener("mouseenter", (e) => {
     e.target.style.zIndex = 2;
   });
@@ -126,6 +119,12 @@ document.querySelectorAll(".gridBtn").forEach((btn) => {
   });
   btn.addEventListener("click", (event) => {
     event.target.style.zIndex = 2;
+  });
+});
+
+document.querySelectorAll(".slider").forEach((el) => {
+  el.addEventListener("click", () => {
+    playSound(soundBuffer.buttonSound, false, 0.25);
   });
 });
 
@@ -143,16 +142,55 @@ document.getElementById("closeModal").addEventListener("click", () => {
   ) {
     document.getElementById("upperCaseNormal").checked = true;
   }
+  playSound(soundBuffer.closeMenu, false, 0.25);
   document.getElementById("modal").classList.remove("openModal");
 });
 
 document.getElementById("selectAll").addEventListener("click", () => {
+  playSound(soundBuffer.buttonSound, false, 0.25);
   toggleSelectAllBtn();
 });
 
 document.getElementById("addUser").addEventListener("click", () => {
+  playSound(soundBuffer.buttonSound, false, 0.25);
   addUser();
 });
+
+document.getElementById("playMusic").addEventListener("click", (e) => {
+  if (!e.target.checked) {
+    musicTimeStamp.gameTune.stopped =
+      audioCtx.currentTime - musicTimeStamp.gameTune.started;
+
+    musicNode.gameTune.stop();
+  } else {
+    playMusic(musicBuffer.gameTune, true, 0.25, "gameTune");
+  }
+});
+
+function playMusic(audioBuffer, loop, volume, musicName) {
+  let ts = musicTimeStamp.hasOwnProperty(musicName)
+    ? audioCtx.currentTime - musicTimeStamp[musicName].stopped
+    : 0;
+  musicNode[musicName] = new AudioBufferSourceNode(audioCtx, {
+    loop: loop,
+  });
+  let gainNode = audioCtx.createGain();
+  musicNode[musicName].buffer = audioBuffer;
+  gainNode.gain.value = volume;
+  musicNode[musicName].connect(gainNode).connect(audioCtx.destination);
+  (musicTimeStamp[musicName] ??= {}).started = ts;
+  log(audioCtx.currentTime - ts);
+  musicNode[musicName].start(0, audioCtx.currentTime - ts);
+}
+
+async function playSound(audioBuffer, loop, volume) {
+  let sound = new AudioBufferSourceNode(audioCtx, { loop: loop });
+  let gainNode = audioCtx.createGain();
+  sound.buffer = audioBuffer;
+  gainNode.gain.value = volume;
+  sound.connect(gainNode).connect(audioCtx.destination);
+  sound.start(0);
+}
 
 function selectUser(user) {
   IDB.get("users")
@@ -232,6 +270,7 @@ function removeUser(user) {
 }
 
 function displayUsers(users) {
+  log(users);
   users = Object.keys(users)
     .sort()
     .reduce((obj, key) => {
@@ -244,7 +283,7 @@ function displayUsers(users) {
       "usersTableBody"
     ).innerHTML += `<tr><td data-user="${key}" class='${
       value ? "selectedUser" : "unselectedUser"
-    }'><div>${key}</div></td>${
+    }'><div data-user="${key}">${key}</div></td>${
       value
         ? "<td><div class='material-icons'>done_all</div></td>"
         : "<td></td>"
@@ -391,7 +430,62 @@ function init() {
     );
   });
 
-  Promise.all([ucNorm, lcNorm, ucCursive, lcCursive, numCharacters, tune])
+  let buttonSound = IDB.get("button").then((rs) => {
+    return (
+      rs ??
+      fetch("./assets/audio/button.mp3")
+        .then((response) => {
+          return response.blob();
+        })
+        .then((rs) => {
+          return IDB.set("button", rs).then(() => {
+            return rs;
+          });
+        })
+    );
+  });
+
+  let openMenu = IDB.get("open_menu").then((rs) => {
+    return (
+      rs ??
+      fetch("./assets/audio/open_menu.mp3")
+        .then((response) => {
+          return response.blob();
+        })
+        .then((rs) => {
+          return IDB.set("open_menu", rs).then(() => {
+            return rs;
+          });
+        })
+    );
+  });
+
+  let closeMenu = IDB.get("close_menu").then((rs) => {
+    return (
+      rs ??
+      fetch("./assets/audio/close_menu.mp3")
+        .then((response) => {
+          return response.blob();
+        })
+        .then((rs) => {
+          return IDB.set("close_menu", rs).then(() => {
+            return rs;
+          });
+        })
+    );
+  });
+
+  Promise.all([
+    ucNorm,
+    lcNorm,
+    ucCursive,
+    lcCursive,
+    numCharacters,
+    tune,
+    buttonSound,
+    openMenu,
+    closeMenu,
+  ])
     .then((rs) => {
       [
         upperCaseNormal,
@@ -400,19 +494,46 @@ function init() {
         lowerCaseCursive,
         numberCharacters,
       ] = [rs[0].data, rs[1].data, rs[2].data, rs[3].data, rs[4].data];
-      return rs[5];
+      return {
+        tune: rs[5],
+        buttonSound: rs[6],
+        openMenu: rs[7],
+        closeMenu: rs[8],
+      };
     })
 
     .then((rs) => {
-      return rs.arrayBuffer();
+      return Promise.all([
+        rs.tune.arrayBuffer(),
+        rs.buttonSound.arrayBuffer(),
+        rs.openMenu.arrayBuffer(),
+        rs.closeMenu.arrayBuffer(),
+      ]).then((rs) => {
+        return {
+          tune: rs[0],
+          buttonSound: rs[1],
+          openMenu: rs[2],
+          closeMenu: rs[3],
+        };
+      });
     })
 
-    .then((rs) => {
-      return audioCtx.decodeAudioData(rs);
+    .then(async (rs) => {
+      await audioCtx.decodeAudioData(rs.tune).then((rs) => {
+        musicBuffer.gameTune = rs;
+      });
+      await audioCtx.decodeAudioData(rs.buttonSound).then((rs) => {
+        soundBuffer.buttonSound = rs;
+      });
+      await audioCtx.decodeAudioData(rs.openMenu).then((rs) => {
+        soundBuffer.openMenu = rs;
+      });
+      await audioCtx.decodeAudioData(rs.closeMenu).then((rs) => {
+        soundBuffer.closeMenu = rs;
+      });
     })
 
-    .then((rs) => {
-      gameTune.audioBuffer = rs;
+    .then(() => {
       document.getElementById("loading").innerHTML =
         "<div class='loader'>Tap Here!</div>";
       document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {
