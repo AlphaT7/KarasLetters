@@ -1,9 +1,26 @@
 import * as IDB from "idb-keyval";
 import { FluidMeter } from "./assets/js-fluid-meter.js";
+import * as ToolTip from "./assets/tooltip.js";
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
-// english voice is array item # 10 if it's ios; # 4 if windows/android;
-const englishVoice = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? 10 : 4;
+// defaultVoice is the array number selector for the speechSynthesis;
+let defaultVoice;
+
+window.speechSynthesis.onvoiceschanged = function () {
+  synth.getVoices().forEach((voice, i) => {
+    if (voice.name.includes("Google US English")) {
+      defaultVoice = i;
+    }
+  });
+
+  if (isNaN(defaultVoice)) {
+    synth.getVoices().forEach((voice, i) => {
+      if (voice.default == true) {
+        defaultVoice = i;
+      }
+    });
+  }
+};
 
 let choice = document.getElementById("speakBtn");
 let c1 = document.getElementById("c1");
@@ -47,7 +64,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   // Save the event to use it later.
   deferredPrompt = e;
-  log(deferredPrompt);
+
   IDB.set("isInstalled", false);
   document.getElementById("installApp").innerHTML = "<div>install_mobile</div>";
   document.getElementById("installApp").classList.remove("toggled");
@@ -179,7 +196,6 @@ function playMusic(audioBuffer, loop, volume, musicName) {
   gainNode.gain.value = volume;
   musicNode[musicName].connect(gainNode).connect(audioCtx.destination);
   (musicTimeStamp[musicName] ??= {}).started = ts;
-  log(audioCtx.currentTime - ts);
   musicNode[musicName].start(0, audioCtx.currentTime - ts);
 }
 
@@ -270,7 +286,6 @@ function removeUser(user) {
 }
 
 function displayUsers(users) {
-  log(users);
   users = Object.keys(users)
     .sort()
     .reduce((obj, key) => {
@@ -402,7 +417,7 @@ function init() {
     return response.json();
   });
 
-  let users = IDB.get("users")
+  IDB.get("users")
     .then((rs) => {
       return (
         rs ??
@@ -538,6 +553,7 @@ function init() {
         "<div class='loader'>Tap Here!</div>";
       document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {
         document.getElementById("loading").style.display = "none";
+        ToolTip.init();
       });
     });
 }
@@ -560,7 +576,7 @@ function speak(textToSpeak) {
   if (!synth.speaking) {
     let voices = synth.getVoices();
     let speech = new SpeechSynthesisUtterance(textToSpeak);
-    speech.voice = voices[englishVoice];
+    speech.voice = voices[defaultVoice];
     speechSynthesis.speak(speech);
   }
 }
