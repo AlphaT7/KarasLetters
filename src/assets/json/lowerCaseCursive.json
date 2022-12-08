@@ -1,157 +1,157 @@
 {
   "data": [
     {
-      "msg": "Please choose the cursive lower case letter 'A'.",
+      "msg": "Please choose the cursive lower case letter 'A' as in apple.",
       "character": "a",
       "cursive": true,
       "check": "lcc-a"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'B'.",
+      "msg": "Please choose the cursive lower case letter 'B' as in baby.",
       "character": "b",
       "cursive": true,
       "check": "lcc-b"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'C'.",
+      "msg": "Please choose the cursive lower case letter 'C' as in cat.",
       "character": "c",
       "cursive": true,
       "check": "lcc-c"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'D'.",
+      "msg": "Please choose the cursive lower case letter 'D' as in doll.",
       "character": "d",
       "cursive": true,
       "check": "lcc-d"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'E'.",
+      "msg": "Please choose the cursive lower case letter 'E' as in elephant.",
       "character": "e",
       "cursive": true,
       "check": "lcc-e"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'F'.",
+      "msg": "Please choose the cursive lower case letter 'F' as in fox.",
       "character": "f",
       "cursive": true,
       "check": "lcc-f"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'G'.",
+      "msg": "Please choose the cursive lower case letter 'G' as in goat.",
       "character": "g",
       "cursive": true,
       "check": "lcc-g"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'H'.",
+      "msg": "Please choose the cursive lower case letter 'H' as in helicopter.",
       "character": "h",
       "cursive": true,
       "check": "lcc-h"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'I'.",
+      "msg": "Please choose the cursive lower case letter 'I' as in icecream.",
       "character": "i",
       "cursive": true,
       "check": "lcc-i"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'J'.",
+      "msg": "Please choose the cursive lower case letter 'J' as in jolly.",
       "character": "j",
       "cursive": true,
       "check": "lcc-j"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'K'.",
+      "msg": "Please choose the cursive lower case letter 'K' as in klee-nex.",
       "character": "k",
       "cursive": true,
       "check": "lcc-k"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'L'.",
+      "msg": "Please choose the cursive lower case letter 'L' as in lobster.",
       "character": "l",
       "cursive": true,
       "check": "lcc-l"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'M'.",
+      "msg": "Please choose the cursive lower case letter 'M' as in mammoth.",
       "character": "m",
       "cursive": true,
       "check": "lcc-m"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'N'.",
+      "msg": "Please choose the cursive lower case letter 'En' as in network.",
       "character": "n",
       "cursive": true,
       "check": "lcc-n"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'O'.",
+      "msg": "Please choose the cursive lower case letter 'O' as in Octopus.",
       "character": "o",
       "cursive": true,
       "check": "lcc-o"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'P'.",
+      "msg": "Please choose the cursive lower case letter 'P' as in Parrot.",
       "character": "p",
       "cursive": true,
       "check": "lcc-p"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'Q'.",
+      "msg": "Please choose the cursive lower case letter 'Q' as in quick.",
       "character": "q",
       "cursive": true,
       "check": "lcc-q"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'R'.",
+      "msg": "Please choose the cursive lower case letter 'R' as in rhinoceros.",
       "character": "r",
       "cursive": true,
       "check": "lcc-r"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'S'.",
+      "msg": "Please choose the cursive lower case letter 'S' as in snake.",
       "character": "s",
       "cursive": true,
       "check": "lcc-s"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'T'.",
+      "msg": "Please choose the cursive lower case letter 'T' as in truck.",
       "character": "t",
       "cursive": true,
       "check": "lcc-t"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'U'.",
+      "msg": "Please choose the cursive lower case letter 'U' as in umbrella.",
       "character": "u",
       "cursive": true,
       "check": "lcc-u"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'V'.",
+      "msg": "Please choose the cursive lower case letter 'V' as in victorious.",
       "character": "v",
       "cursive": true,
       "check": "lcc-v"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'W'.",
+      "msg": "Please choose the cursive lower case letter 'W' as in walrus.",
       "character": "w",
       "cursive": true,
       "check": "lcc-w"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'X'.",
+      "msg": "Please choose the cursive lower case letter 'X' as in extra.",
       "character": "x",
       "cursive": true,
       "check": "lcc-x"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'Y'.",
+      "msg": "Please choose the cursive lower case letter 'Y' as in yak.",
       "character": "y",
       "cursive": true,
       "check": "lcc-y"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'Z'.",
+      "msg": "Please choose the cursive lower case letter 'Z' as in zebra.",
       "character": "z",
       "cursive": true,
       "check": "lcc-z"

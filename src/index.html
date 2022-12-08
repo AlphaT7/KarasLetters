@@ -12,7 +12,7 @@
   <!-- <link rel="stylesheet" href="./assets/introjs-nassim.css" /> -->
   <link rel="stylesheet" href="./assets/style.css" />
   <link rel="manifest" href="./assets/site.webmanifest" />
-  <link rel="apple-touch-icon image_src" href="./assets/images/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="./assets/images/favicon-32x32.png" />
   <script src="./assets/particles.js" defer></script>
 </head>
 
@@ -21,6 +21,15 @@
     <div class="loader1">Loading</div>
   </div>
   <div id="mainWrapper">
+    <div id="victory">
+      <div id="victoryContainer">
+        <div class="banner">Victory!</div>
+        <div>
+          <div>You win!<br />Play again?</div>
+          <button type="button" id="replay" class="material-icons">restart_alt</button>
+        </div>
+      </div>
+    </div>
     <div id="particlesWrapper"></div>
     <div id="modal">
       <div id="modalTitle">
@@ -149,16 +158,17 @@
     <div id="wrapperTitle">
       <div>Kara's Letters</div>
       <button id="openModal" class="btn material-icons">settings</button>
+      <div id="tutorial" class="btn material-icons">question_mark</div>
     </div>
     <div id="mid">
-      <button id="c1" class="userChoice">?</button>
-      <button id="c2" class="userChoice">?</button>
-      <button id="c3" class="userChoice">?</button>
+      <button id="c1" class="userChoice">c</button>
+      <button id="c2" class="userChoice">b</button>
+      <button id="c3" class="userChoice">a</button>
       <div id="fluid-meter"></div>
     </div>
     <div id="footer">
       <button id="speakBtn" class="btn userChoice material-icons speakBtn">
-        record_voice_over
+        play_arrow
       </button>
       <img alt="wizard" src="./assets/images/wizard.png" />
     </div>

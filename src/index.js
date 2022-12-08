@@ -1,6 +1,8 @@
 import * as IDB from "idb-keyval";
-import { FluidMeter } from "./assets/js-fluid-meter.js";
-import * as ToolTip from "./assets/tooltip.js";
+import { CircularFluidMeter } from "fluid-meter";
+import * as ToolTip from "./assets/modules/tooltip.js";
+import * as Confetti from "./assets/modules/confetti.js";
+
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
 // defaultVoice is the array number selector for the speechSynthesis;
@@ -22,7 +24,7 @@ window.speechSynthesis.onvoiceschanged = function () {
   }
 };
 
-let choice = document.getElementById("speakBtn");
+let speakQuestion = document.getElementById("speakBtn");
 let c1 = document.getElementById("c1");
 let c2 = document.getElementById("c2");
 let c3 = document.getElementById("c3");
@@ -37,9 +39,10 @@ let musicBuffer = {};
 let musicNode = {};
 let musicTimeStamp = {};
 let answer = "";
-let answeredCorrectly = false;
+let answeredCorrectly = true;
 let score = 0;
 let deferredPrompt;
+let currentQuestion = "";
 
 IDB.get("isInstalled").then((val) => {
   // check the IndexedDb to see if the app is installed
@@ -57,6 +60,10 @@ IDB.get("users").then((users) => {
       return users[key] == true;
     }
   );
+});
+
+document.getElementById("tutorial").addEventListener("click", () => {
+  ToolTip.init(true);
 });
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -82,16 +89,20 @@ window.addEventListener("beforeinstallprompt", (e) => {
   });
 });
 
-choice.addEventListener("click", (e) => {
+speakQuestion.addEventListener("click", (e) => {
   if (synth.speaking) return;
-  document.querySelectorAll(".userChoice").forEach((element) => {
-    element.classList.remove("correct");
-    element.classList.remove("error");
-    element.classList.remove("cursive");
-  });
+  if (!answeredCorrectly) {
+    speak(currentQuestion);
+  } else {
+    document.querySelectorAll(".userChoice").forEach((element) => {
+      element.classList.remove("correct");
+      element.classList.remove("error");
+      element.classList.remove("cursive");
+    });
 
-  answeredCorrectly = false;
-  populateAnswers(e.target.dataset.user);
+    answeredCorrectly = false;
+    populateAnswers(e.target.dataset.user);
+  }
 });
 
 document.querySelectorAll(".userChoice").forEach((element) => {
@@ -100,26 +111,38 @@ document.querySelectorAll(".userChoice").forEach((element) => {
     if (e.target.dataset.check == answer.check) {
       if (!answeredCorrectly) {
         e.target.classList.add("correct");
-        score = score + 10 <= 100 ? (score += 10) : 100;
-        fm.setPercentage(score);
+        score = score + 25 <= 100 ? (score += 25) : 100;
+        fluidMeter.progress = score;
         answeredCorrectly = true;
       }
       if (score == 100) {
-        fm.setPercentage(score);
+        fluidMeter.progress = score;
         speak("You win! Play again?");
-        if (confirm("You win! Play again?")) {
-          score = 0;
-          fm.setPercentage(score);
-        }
+        document.getElementById("victory").classList.add("openModal");
+        Confetti.init();
       }
       speak("That's right!");
     } else {
       e.target.classList.add("error");
-      score = score - 15 >= 0 ? (score -= 15) : 0;
-      fm.setPercentage(score);
+      score = score - 40 >= 0 ? (score -= 40) : 0;
+      fluidMeter.progress = score;
       speak("Incorrect!");
     }
   });
+});
+
+document.getElementById("replay").addEventListener("click", () => {
+  document.getElementById("victory").classList.remove("openModal");
+  score = 0;
+  fluidMeter.progress = score;
+  document.querySelectorAll(".userChoice").forEach((element) => {
+    element.classList.remove("correct");
+    element.classList.remove("error");
+    element.classList.remove("cursive");
+  });
+
+  answeredCorrectly = false;
+  populateAnswers(document.getElementById("speakBtn").dataset.user);
 });
 
 document.getElementById("openModal").addEventListener("click", (e) => {
@@ -385,7 +408,7 @@ function init() {
       navigator.serviceWorker
         .register("/service-worker.js")
         .then((registration) => {
-          console.log("SW registered: ", registration);
+          // console.log("SW registered: ", registration);
         })
         .catch((registrationError) => {
           console.log("SW registration failed: ", registrationError);
@@ -553,7 +576,7 @@ function init() {
         "<div class='loader'>Tap Here!</div>";
       document.querySelectorAll(".loader")[0].addEventListener("click", (e) => {
         document.getElementById("loading").style.display = "none";
-        ToolTip.init();
+        ToolTip.init(false);
       });
     });
 }
@@ -644,37 +667,31 @@ function populateAnswers(userName) {
       lastUsedObj = characterObj;
     }
   });
-  speak(`Hello ${userName}! ` + answer.msg);
+  currentQuestion = `Hello ${userName}! ${answer.msg}`;
+
+  speak(currentQuestion);
 }
 
 init();
 
-let fm = new FluidMeter();
-fm.init({
-  targetContainer: document.getElementById("fluid-meter"),
-  fillPercentage: score,
-  options: {
-    drawPercentageSign: false,
-    drawBubbles: true,
-    size: window.screen.width > 470 ? 235 : 200,
-    borderWidth: 4,
-    foregroundColor: "#fafafa",
-    foregroundFluidLayer: {
-      fillStyle: "purple",
-      angularSpeed: 100,
-      maxAmplitude: 12,
-      frequency: 30,
-      horizontalSpeed: -150,
+const fluidMeter = new CircularFluidMeter(
+  document.querySelector("#fluid-meter"),
+  {
+    initialProgress: 0,
+    maxProgress: 100,
+    borderWidth: 10,
+    borderColor: "#643D88",
+    padding: 30,
+    backgroundColor: "#E7CEFF",
+    showProgress: false,
+    showBubbles: true,
+    bubbleColor: "#fff",
+    use3D: true,
+    fluidConfiguration: {
+      color: "#800080",
     },
-    backgroundFluidLayer: {
-      fillStyle: "pink",
-      angularSpeed: 100,
-      maxAmplitude: 9,
-      frequency: 30,
-      horizontalSpeed: 150,
-    },
-  },
-});
+  }
+);
 
 particlesJS("particlesWrapper", {
   particles: {

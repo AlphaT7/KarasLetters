@@ -1,157 +1,157 @@
 {
   "data": [
     {
-      "msg": "Please choose the capital letter 'A'.",
+      "msg": "Please choose the capital letter 'A' as in apple.",
       "character": "A",
       "cursive": false,
       "check": "ucl-A"
     },
     {
-      "msg": "Please choose the capital letter 'B'.",
+      "msg": "Please choose the capital letter 'B' as in baby.",
       "character": "B",
       "cursive": false,
       "check": "ucl-B"
     },
     {
-      "msg": "Please choose the capital letter 'C'.",
+      "msg": "Please choose the capital letter 'C' as in cat.",
       "character": "C",
       "cursive": false,
       "check": "ucl-C"
     },
     {
-      "msg": "Please choose the capital letter 'D'.",
+      "msg": "Please choose the capital letter 'D' as in doll.",
       "character": "D",
       "cursive": false,
       "check": "ucl-D"
     },
     {
-      "msg": "Please choose the capital letter 'E'.",
+      "msg": "Please choose the capital letter 'E' as in elephant.",
       "character": "E",
       "cursive": false,
       "check": "ucl-E"
     },
     {
-      "msg": "Please choose the capital letter 'F'.",
+      "msg": "Please choose the capital letter 'F' as in fox.",
       "character": "F",
       "cursive": false,
       "check": "ucl-F"
     },
     {
-      "msg": "Please choose the capital letter 'G'.",
+      "msg": "Please choose the capital letter 'G' as in goat.",
       "character": "G",
       "cursive": false,
       "check": "ucl-G"
     },
     {
-      "msg": "Please choose the capital letter 'H'.",
+      "msg": "Please choose the capital letter 'H' as in helicopter.",
       "character": "H",
       "cursive": false,
       "check": "ucl-H"
     },
     {
-      "msg": "Please choose the capital letter 'I'.",
+      "msg": "Please choose the capital letter 'I' as in icecream.",
       "character": "I",
       "cursive": false,
       "check": "ucl-I"
     },
     {
-      "msg": "Please choose the capital letter 'J'.",
+      "msg": "Please choose the capital letter 'J' as in jolly.",
       "character": "J",
       "cursive": false,
       "check": "ucl-J"
     },
     {
-      "msg": "Please choose the capital letter 'K'.",
+      "msg": "Please choose the capital letter 'K' as in klee-nex.",
       "character": "K",
       "cursive": false,
       "check": "ucl-K"
     },
     {
-      "msg": "Please choose the capital letter 'L'.",
+      "msg": "Please choose the capital letter 'L' as in lobster.",
       "character": "L",
       "cursive": false,
       "check": "ucl-L"
     },
     {
-      "msg": "Please choose the capital letter 'M'.",
+      "msg": "Please choose the capital letter 'M' as in mammoth.",
       "character": "M",
       "cursive": false,
       "check": "ucl-M"
     },
     {
-      "msg": "Please choose the capital letter 'N'.",
+      "msg": "Please choose the capital letter 'En' as in network.",
       "character": "N",
       "cursive": false,
       "check": "ucl-N"
     },
     {
-      "msg": "Please choose the capital letter 'O'.",
+      "msg": "Please choose the capital letter 'O' as in Octopus.",
       "character": "O",
       "cursive": false,
       "check": "ucl-O"
     },
     {
-      "msg": "Please choose the capital letter 'P'.",
+      "msg": "Please choose the capital letter 'P' as in Parrot.",
       "character": "P",
       "cursive": false,
       "check": "ucl-P"
     },
     {
-      "msg": "Please choose the capital letter 'Q'.",
+      "msg": "Please choose the capital letter 'Q' as in quick.",
       "character": "Q",
       "cursive": false,
       "check": "ucl-Q"
     },
     {
-      "msg": "Please choose the capital letter 'R'.",
+      "msg": "Please choose the capital letter 'R' as in rhinoceros.",
       "character": "R",
       "cursive": false,
       "check": "ucl-R"
     },
     {
-      "msg": "Please choose the capital letter 'S'.",
+      "msg": "Please choose the capital letter 'S' as in snake.",
       "character": "S",
       "cursive": false,
       "check": "ucl-S"
     },
     {
-      "msg": "Please choose the capital letter 'T'.",
+      "msg": "Please choose the capital letter 'T' as in truck.",
       "character": "T",
       "cursive": false,
       "check": "ucl-T"
     },
     {
-      "msg": "Please choose the capital letter 'U'.",
+      "msg": "Please choose the capital letter 'U' as in umbrella.",
       "character": "U",
       "cursive": false,
       "check": "ucl-U"
     },
     {
-      "msg": "Please choose the capital letter 'V'.",
+      "msg": "Please choose the capital letter 'V' as in victorious.",
       "character": "V",
       "cursive": false,
       "check": "ucl-V"
     },
     {
-      "msg": "Please choose the capital letter 'W'.",
+      "msg": "Please choose the capital letter 'W' as in walrus.",
       "character": "W",
       "cursive": false,
       "check": "ucl-W"
     },
     {
-      "msg": "Please choose the capital letter 'X'.",
+      "msg": "Please choose the capital letter 'X'. as in extra",
       "character": "X",
       "cursive": false,
       "check": "ucl-X"
     },
     {
-      "msg": "Please choose the capital letter 'Y'.",
+      "msg": "Please choose the capital letter 'Y' as in yak.",
       "character": "Y",
       "cursive": false,
       "check": "ucl-Y"
     },
     {
-      "msg": "Please choose the capital letter 'Z'.",
+      "msg": "Please choose the capital letter 'Z' as in zebra.",
       "character": "Z",
       "cursive": false,
       "check": "ucl-Z"

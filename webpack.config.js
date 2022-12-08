@@ -6,8 +6,8 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 module.exports = {
   watch: false,
   entry: "./src/index.js",
-  mode: "development",
-  // mode: "production",
+  //mode: "development",
+  mode: "production",
   devtool: "inline-source-map",
   target: "web",
   stats: {
@@ -42,19 +42,32 @@ module.exports = {
     }),
     new CopyPlugin({
       // this plugin copy's the asset folder to the production public folder
-      patterns: [{ from: "./src/assets", to: "./assets/" }],
+      patterns: [
+        {
+          from: "./src/assets",
+          to: "./assets/",
+          filter: async (resourcePath) => {
+            if (resourcePath.includes("modules")) {
+              return false;
+            }
+
+            return true;
+          },
+        },
+      ],
     }),
     new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
-      exclude: [/audio/],
-      maximumFileSizeToCacheInBytes: 5000000,
+      exclude: [/audio/, /modules/],
+      maximumFileSizeToCacheInBytes: 50000000,
       runtimeCaching: [
         {
-          //urlPattern: ({ url }) => url.origin === "https://karasletters-abb2b.web.app/",
-          urlPattern: ({ url }) => url.origin === "http://localhost:3000/",
+          urlPattern: ({ url }) =>
+            url.origin === "https://karasletters-abb2b.web.app/",
+          //urlPattern: ({ url }) => url.origin === "http://localhost:3000/",
           handler: "NetworkFirst",
           options: {
             cacheName: "WW-AppCache",

@@ -1,157 +1,157 @@
 {
   "data": [
     {
-      "msg": "Please choose the cursive upper case letter 'A'.",
+      "msg": "Please choose the cursive upper case letter 'Ae' as in apple.",
       "character": "A",
       "cursive": true,
       "check": "ucc-A"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'B'.",
+      "msg": "Please choose the cursive upper case letter 'B' as in baby.",
       "character": "B",
       "cursive": true,
       "check": "ucc-B"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'C'.",
+      "msg": "Please choose the cursive upper case letter 'C' as in cat.",
       "character": "C",
       "cursive": true,
       "check": "ucc-C"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'D'.",
+      "msg": "Please choose the cursive upper case letter 'D' as in doll.",
       "character": "D",
       "cursive": true,
       "check": "ucc-D"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'E'.",
+      "msg": "Please choose the cursive upper case letter 'E' as in elephant.",
       "character": "E",
       "cursive": true,
       "check": "ucc-E"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'F'.",
+      "msg": "Please choose the cursive upper case letter 'F' as in fox.",
       "character": "F",
       "cursive": true,
       "check": "ucc-F"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'G'.",
+      "msg": "Please choose the cursive upper case letter 'G' as in goat.",
       "character": "G",
       "cursive": true,
       "check": "ucc-G"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'H'.",
+      "msg": "Please choose the cursive upper case letter 'H' as in helicopter.",
       "character": "H",
       "cursive": true,
       "check": "ucc-H"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'I'.",
+      "msg": "Please choose the cursive upper case letter 'I' as in icecream.",
       "character": "I",
       "cursive": true,
       "check": "ucc-I"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'J'.",
+      "msg": "Please choose the cursive upper case letter 'J' as in jolly.",
       "character": "J",
       "cursive": true,
       "check": "ucc-J"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'K'.",
+      "msg": "Please choose the cursive upper case letter 'K' as in klee-nex.",
       "character": "K",
       "cursive": true,
       "check": "ucc-K"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'L'.",
+      "msg": "Please choose the cursive upper case letter 'L' as in lobster.",
       "character": "L",
       "cursive": true,
       "check": "ucc-L"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'M'.",
+      "msg": "Please choose the cursive upper case letter 'M' as in mammoth.",
       "character": "M",
       "cursive": true,
       "check": "ucc-M"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'N'.",
+      "msg": "Please choose the cursive upper case letter 'En' as in network.",
       "character": "N",
       "cursive": true,
       "check": "ucc-N"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'O'.",
+      "msg": "Please choose the cursive upper case letter 'O' as in Octopus.",
       "character": "O",
       "cursive": true,
       "check": "ucc-O"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'P'.",
+      "msg": "Please choose the cursive upper case letter 'P' as in Parrot.",
       "character": "P",
       "cursive": true,
       "check": "ucc-P"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'Q'.",
+      "msg": "Please choose the cursive upper case letter 'Q' as in quick.",
       "character": "Q",
       "cursive": true,
       "check": "ucc-Q"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'R'.",
+      "msg": "Please choose the cursive upper case letter 'R' as in rhinoceros.",
       "character": "R",
       "cursive": true,
       "check": "ucc-R"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'S'.",
+      "msg": "Please choose the cursive upper case letter 'S' as in snake.",
       "character": "S",
       "cursive": true,
       "check": "ucc-S"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'T'.",
+      "msg": "Please choose the cursive upper case letter 'T' as in truck.",
       "character": "T",
       "cursive": true,
       "check": "ucc-T"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'U'.",
+      "msg": "Please choose the cursive upper case letter 'U' as in umbrella.",
       "character": "U",
       "cursive": true,
       "check": "ucc-U"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'V'.",
+      "msg": "Please choose the cursive upper case letter 'V' as in victorious.",
       "character": "V",
       "cursive": true,
       "check": "ucc-V"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'W'.",
+      "msg": "Please choose the cursive upper case letter 'W' as in walrus.",
       "character": "W",
       "cursive": true,
       "check": "ucc-W"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'X'.",
+      "msg": "Please choose the cursive upper case letter 'X' as in extra.",
       "character": "X",
       "cursive": true,
       "check": "ucc-X"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'Y'.",
+      "msg": "Please choose the cursive upper case letter 'Y' as in yak.",
       "character": "Y",
       "cursive": true,
       "check": "ucc-Y"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'Z'.",
+      "msg": "Please choose the cursive upper case letter 'Z' as in zebra.",
       "character": "Z",
       "cursive": true,
       "check": "ucc-Z"
