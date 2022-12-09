@@ -31,7 +31,7 @@
       "check": "lcc-e"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'F' as in fox.",
+      "msg": "Please choose the cursive lower case letter F as in fox.",
       "character": "f",
       "cursive": true,
       "check": "lcc-f"
@@ -61,7 +61,7 @@
       "check": "lcc-j"
     },
     {
-      "msg": "Please choose the cursive lower case letter 'K' as in klee-nex.",
+      "msg": "Please choose the cursive lower case letter 'K' as in kangaroo.",
       "character": "k",
       "cursive": true,
       "check": "lcc-k"

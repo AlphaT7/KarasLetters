@@ -29,13 +29,13 @@
   "description": "A letter & number learning application for young kids!",
   "screenshots": [
     {
-      "src": "./images/application_screenshot.png",
-      "sizes": "500x500",
+      "src": "./images/application.jpg",
+      "sizes": "500x889",
       "type": "image/png"
     },
     {
-      "src": "./images/application_settings.png",
-      "sizes": "500x1082",
+      "src": "./images/settings.jpg",
+      "sizes": "500x889",
       "type": "image/png"
     }
   ]

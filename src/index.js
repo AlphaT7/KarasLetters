@@ -2,6 +2,7 @@ import * as IDB from "idb-keyval";
 import { CircularFluidMeter } from "fluid-meter";
 import * as ToolTip from "./assets/modules/tooltip.js";
 import * as Confetti from "./assets/modules/confetti.js";
+import * as Toast from "@brenoroosevelt/toast/lib/esm/toast.js";
 
 const log = console.log.bind(console);
 const synth = window.speechSynthesis;
@@ -107,7 +108,17 @@ speakQuestion.addEventListener("click", (e) => {
 
 document.querySelectorAll(".userChoice").forEach((element) => {
   element.addEventListener("click", (e) => {
-    if (synth.speaking) return;
+    if (synth.speaking) {
+      Toast.warning("Please wait for the application to finish speaking...", {
+        title: "Please Wait!",
+        position: "bottom",
+        align: "center",
+        shadow: true,
+        duration: 2500,
+        dismissible: true,
+      });
+      return;
+    }
     if (e.target.dataset.check == answer.check) {
       if (!answeredCorrectly) {
         e.target.classList.add("correct");
@@ -117,7 +128,7 @@ document.querySelectorAll(".userChoice").forEach((element) => {
       }
       if (score == 100) {
         fluidMeter.progress = score;
-        speak("You win! Play again?");
+        speak("You win! Would you like to play again?");
         document.getElementById("victory").classList.add("openModal");
         Confetti.init();
       }
@@ -402,7 +413,7 @@ function colorSelectAllBtn() {
 }
 
 function init() {
-  // Register the serviceworker for installation and cacheing capabilities
+  // Register the service-worker for installation and caching capabilities
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
@@ -582,7 +593,12 @@ function init() {
 }
 
 function randomQuery(objArray) {
-  return objArray[(Math.random() * (objArray.length - 1)).toFixed(0)];
+  let query = objArray[(Math.random() * (objArray.length - 1)).toFixed(0)];
+  if (answer == query) {
+    randomQuery(objArray);
+  } else {
+    return query;
+  }
 }
 
 function randomCharacter(characters) {
@@ -600,6 +616,7 @@ function speak(textToSpeak) {
     let voices = synth.getVoices();
     let speech = new SpeechSynthesisUtterance(textToSpeak);
     speech.voice = voices[defaultVoice];
+    speech.rate = 0.85;
     speechSynthesis.speak(speech);
   }
 }
@@ -636,6 +653,7 @@ function populateAnswers(userName) {
   let choiceArray = ["", "", ""];
   let lastUsedObj = {};
   let randomObj = randomQuery(answerArray);
+
   answer = randomObj;
 
   choiceArray.map((choice, i, array) => {

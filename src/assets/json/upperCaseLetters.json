@@ -31,7 +31,7 @@
       "check": "ucl-E"
     },
     {
-      "msg": "Please choose the capital letter 'F' as in fox.",
+      "msg": "Please choose the capital letter F as in fox.",
       "character": "F",
       "cursive": false,
       "check": "ucl-F"
@@ -61,7 +61,7 @@
       "check": "ucl-J"
     },
     {
-      "msg": "Please choose the capital letter 'K' as in klee-nex.",
+      "msg": "Please choose the capital letter 'K' as in kangaroo.",
       "character": "K",
       "cursive": false,
       "check": "ucl-K"

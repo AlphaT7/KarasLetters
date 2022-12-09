@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "msg": "Please choose the lower case letter 'A' as in apple.",
+      "msg": "Please choose the lower case letter A as in apple.",
       "character": "a",
       "cursive": false,
       "check": "lcl-a"
@@ -31,7 +31,7 @@
       "check": "lcl-e"
     },
     {
-      "msg": "Please choose the lower case letter 'F' as in fox.",
+      "msg": "Please choose the lower case letter F as in fox.",
       "character": "f",
       "cursive": false,
       "check": "lcl-f"
@@ -61,7 +61,7 @@
       "check": "lcl-j"
     },
     {
-      "msg": "Please choose the lower case letter 'K' as in klee-nex.",
+      "msg": "Please choose the lower case letter 'K' as in kangaroo.",
       "character": "k",
       "cursive": false,
       "check": "lcl-k"

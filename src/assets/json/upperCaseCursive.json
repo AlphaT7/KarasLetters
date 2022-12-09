@@ -31,7 +31,7 @@
       "check": "ucc-E"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'F' as in fox.",
+      "msg": "Please choose the cursive upper case letter F as in fox.",
       "character": "F",
       "cursive": true,
       "check": "ucc-F"
@@ -61,7 +61,7 @@
       "check": "ucc-J"
     },
     {
-      "msg": "Please choose the cursive upper case letter 'K' as in klee-nex.",
+      "msg": "Please choose the cursive upper case letter 'K' as in kangaroo.",
       "character": "K",
       "cursive": true,
       "check": "ucc-K"

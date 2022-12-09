@@ -3,13 +3,6 @@
   src: url(./fonts/CedarvilleCursive-Regular.ttf) format("truetype");
 }
 
-
-
-/* @font-face {
-  font-family: "CedarvilleCursive-Regular";
-  src: url(./fonts/CedarvilleCursive-Regular-Regular.ttf) format("truetype");
-} */
-
 html,
 body {
   width: 100%;
@@ -194,6 +187,11 @@ div {
 }
 
 #speakBtn {
+  --glow-color: rgb(217, 176, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: 3px solid var(--glow-color);
+  color: var(--glow-color);
+  background-color: var(--btn-color);
   font-size: 4em;
   -webkit-user-select: none;
   user-select: none;
@@ -201,6 +199,7 @@ div {
   z-index: 3 !important;
   display: block;
   float: left;
+  align-self: center;
 }
 
 #modal {
@@ -352,6 +351,7 @@ div {
   transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
 }
 
+
 .userChoice:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
@@ -360,11 +360,12 @@ div {
     inset 0 0 0.75em 0.25em var(--glow-color);
 }
 
+/* 
 .userChoice:active {
   box-shadow: 0 0 0.6em 0.25em var(--glow-color),
     0 0 2.5em 2em var(--glow-spread-color),
     inset 0 0 0.5em 0.25em var(--glow-color);
-}
+} */
 
 .error {
   --glow-color: #ffb0b0;
@@ -791,28 +792,24 @@ input:checked+.slider:before {
   z-index: -2;
   background: url("./images/unicorn.png");
   background-repeat: no-repeat;
-  background-position: bottom 50px left 50px;
+  background-position: bottom -25px right -75px;
+  text-shadow: 0px 0px 3px #ffffff;
 }
 
 #victoryContainer>div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2em;
-  gap: 150px;
+  gap: 50px;
   justify-content: space-evenly;
 }
 
 #replay {
   --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
   border: 2px solid var(--glow-color);
   color: #fff;
   font-size: 3.5em;
-  width: 1.5em;
-  height: 1.5em;
+  padding: .25em;
   background-color: rgb(198 38 221);
   border-radius: 50%;
   outline: none;
@@ -836,7 +833,7 @@ input:checked+.slider:before {
   --bannerBorder: rgb(170, 17, 162);
   --bannerBackground: rgb(182, 34, 187);
   position: relative;
-  margin: 2em auto;
+  margin: 1em auto;
   display: block;
   width: calc(100% - 6em);
   border: 1px solid var(--bannerBorder);
