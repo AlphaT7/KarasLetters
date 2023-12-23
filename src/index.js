@@ -417,7 +417,7 @@ function init() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
-        .register("/service-worker.js")
+        .register("/sw.js")
         .then((registration) => {
           // console.log("SW registered: ", registration);
         })
@@ -427,27 +427,23 @@ function init() {
     });
   }
 
-  let ucNorm = fetch("./assets/json/upperCaseLetters.json").then((response) => {
+  let ucNorm = fetch("../json/upperCaseLetters.json").then((response) => {
     return response.json();
   });
 
-  let lcNorm = fetch("./assets/json/lowerCaseLetters.json").then((response) => {
+  let lcNorm = fetch("../json/lowerCaseLetters.json").then((response) => {
     return response.json();
   });
 
-  let ucCursive = fetch("./assets/json/upperCaseCursive.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
+  let ucCursive = fetch("../json/upperCaseCursive.json").then((response) => {
+    return response.json();
+  });
 
-  let lcCursive = fetch("./assets/json/lowerCaseCursive.json").then(
-    (response) => {
-      return response.json();
-    }
-  );
+  let lcCursive = fetch("../json/lowerCaseCursive.json").then((response) => {
+    return response.json();
+  });
 
-  let numCharacters = fetch("./assets/json/numbers.json").then((response) => {
+  let numCharacters = fetch("../json/numbers.json").then((response) => {
     return response.json();
   });
 
@@ -467,7 +463,7 @@ function init() {
   let tune = IDB.get("tune").then((rs) => {
     return (
       rs ??
-      fetch("./assets/audio/karasletters.mp3")
+      fetch("../audio/karasletters.mp3")
         .then((response) => {
           return response.blob();
         })
@@ -482,7 +478,7 @@ function init() {
   let buttonSound = IDB.get("button").then((rs) => {
     return (
       rs ??
-      fetch("./assets/audio/button.mp3")
+      fetch("../audio/button.mp3")
         .then((response) => {
           return response.blob();
         })
@@ -497,7 +493,7 @@ function init() {
   let openMenu = IDB.get("open_menu").then((rs) => {
     return (
       rs ??
-      fetch("./assets/audio/open_menu.mp3")
+      fetch("../audio/open_menu.mp3")
         .then((response) => {
           return response.blob();
         })
@@ -512,7 +508,7 @@ function init() {
   let closeMenu = IDB.get("close_menu").then((rs) => {
     return (
       rs ??
-      fetch("./assets/audio/close_menu.mp3")
+      fetch("../audio/close_menu.mp3")
         .then((response) => {
           return response.blob();
         })
@@ -568,18 +564,30 @@ function init() {
     })
 
     .then(async (rs) => {
-      await audioCtx.decodeAudioData(rs.tune).then((rs) => {
-        musicBuffer.gameTune = rs;
-      });
-      await audioCtx.decodeAudioData(rs.buttonSound).then((rs) => {
-        soundBuffer.buttonSound = rs;
-      });
-      await audioCtx.decodeAudioData(rs.openMenu).then((rs) => {
-        soundBuffer.openMenu = rs;
-      });
-      await audioCtx.decodeAudioData(rs.closeMenu).then((rs) => {
-        soundBuffer.closeMenu = rs;
-      });
+      await audioCtx
+        .decodeAudioData(rs.tune)
+        .then((rs) => {
+          musicBuffer.gameTune = rs;
+        })
+        .catch((error) => console.log(error, 1));
+      await audioCtx
+        .decodeAudioData(rs.buttonSound)
+        .then((rs) => {
+          soundBuffer.buttonSound = rs;
+        })
+        .catch((error) => console.log(error, 2));
+      await audioCtx
+        .decodeAudioData(rs.openMenu)
+        .then((rs) => {
+          soundBuffer.openMenu = rs;
+        })
+        .catch((error) => console.log(error, 3));
+      await audioCtx
+        .decodeAudioData(rs.closeMenu)
+        .then((rs) => {
+          soundBuffer.closeMenu = rs;
+        })
+        .catch((error) => console.log(error, 4));
     })
 
     .then(() => {
