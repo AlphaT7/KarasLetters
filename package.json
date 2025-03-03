@@ -19,7 +19,6 @@
   "dependencies": {
     "@brenoroosevelt/toast": "^2.0.3",
     "canvas-confetti": "^1.6.0",
-    "firebase": "^10.7.1",
     "fluid-meter": "^1.1.2",
     "idb-keyval": "^6.2.1",
     "intro.js": "^7.2.0"

@@ -330,13 +330,11 @@ function displayUsers(users) {
   for (const [key, value] of Object.entries(users)) {
     document.getElementById(
       "usersTableBody"
-    ).innerHTML += `<tr><td data-user="${key}" class='${
-      value ? "selectedUser" : "unselectedUser"
-    }'><div data-user="${key}">${key}</div></td>${
-      value
+    ).innerHTML += `<tr><td data-user="${key}" class='${value ? "selectedUser" : "unselectedUser"
+      }'><div data-user="${key}">${key}</div></td>${value
         ? "<td><div class='material-icons'>done_all</div></td>"
         : "<td></td>"
-    }<td><div data-user="${key}" class="material-icons editUser">edit</div></td><td><div data-user="${key}" class="material-icons removeUser">person_remove</div></td></tr>`;
+      }<td><div data-user="${key}" class="material-icons editUser">edit</div></td><td><div data-user="${key}" class="material-icons removeUser">person_remove</div></td></tr>`;
   }
   document.querySelectorAll(".removeUser").forEach((el) => {
     el.addEventListener("click", (e) => {
