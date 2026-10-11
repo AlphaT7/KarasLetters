@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <title>Kara's Letters</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="apple-touch-icon" href="./images/favicon-32x32.png" />
+    <script src="./particles.js" defer></script>
+    <script type="module" crossorigin src="/assets/index-DSxDZyCa.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-uPlXzGfR.css">
+  </head>
+
+  <body>
+    <div id="loading">
+      <div class="loader1">Loading</div>
+    </div>
+    <div id="mainWrapper">
+      <div id="victory">
+        <div id="victoryContainer">
+          <div class="banner">Victory!</div>
+          <div>
+            <div>You win!<br />Would you like to play again?</div>
+            <button type="button" id="replay" class="material-icons">
+              restart_alt
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="particlesWrapper"></div>
+      <div id="modal">
+        <div id="modalTitle">
+          <div>Settings</div>
+          <div id="closeModal" class="btn material-icons">close</div>
+        </div>
+        <div id="settingsWrapper">
+          <div id="tabsWrapper">
+            <input id="tab1" type="radio" name="tabs" checked />
+            <label for="tab1">Config</label>
+
+            <input id="tab2" type="radio" name="tabs" />
+            <label for="tab2">Users</label>
+
+            <input id="tab3" type="radio" name="tabs" />
+            <label for="tab3">About</label>
+
+            <div class="settingsContent" id="content1">
+              <table id="configTable">
+                <tbody>
+                  <tr>
+                    <td>Install App</td>
+                    <td>
+                      <div
+                        data-install="false"
+                        id="installApp"
+                        class="material-icons"
+                      >
+                        <div>install_mobile</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <td><label for="playMusic">Play Music</label></td>
+                  <td>
+                    <label for="playMusic" class="switch">
+                      <input type="checkbox" id="playMusic" />
+                      <span id="slider0" class="slider round"></span>
+                    </label>
+                  </td>
+                  <tr>
+                    <td>Select All</td>
+                    <td>
+                      <div
+                        data-toggle="false"
+                        id="selectAll"
+                        class="material-icons"
+                      >
+                        <div>done_all</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="upperCaseNormal">Upper Case</label></td>
+                    <td>
+                      <label for="upperCaseNormal" class="switch">
+                        <input type="checkbox" id="upperCaseNormal" checked />
+                        <span id="slider1" class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="lowerCaseNormal">Lower Case</label></td>
+                    <td>
+                      <label for="lowerCaseNormal" class="switch">
+                        <input type="checkbox" id="lowerCaseNormal" />
+                        <span id="slider2" class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="numberCharacters">Numbers [ 0 - 20 ]</label>
+                    </td>
+                    <td>
+                      <label for="numberCharacters" class="switch">
+                        <input type="checkbox" id="numberCharacters" />
+                        <span id="slider3" class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="upperCaseCursive">Upper Case Cursive</label>
+                    </td>
+                    <td>
+                      <label for="upperCaseCursive" class="switch">
+                        <input type="checkbox" id="upperCaseCursive" />
+                        <span id="slider4" class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="lowerCaseCursive">Lower Case Cursive</label>
+                    </td>
+                    <td>
+                      <label for="lowerCaseCursive" class="switch">
+                        <input type="checkbox" id="lowerCaseCursive" />
+                        <span id="slider5" class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="settingsContent" id="content2">
+              <div id="addUser" class="btn addUser">
+                <div class="material-icons">person_add</div>
+                Add User
+              </div>
+              <div id="usersTableScroll">
+                <table id="usersTable">
+                  <tbody id="usersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="settingsContent" id="content3">
+              <div>
+                <p>
+                  Kara's Letters is a small mobile friendly learning application
+                  written for fun by Jamison at Winters Webs
+                </p>
+                <p>
+                  Credit goes to Steven Winters Jr. for the musical tune and
+                  sound effects.
+                </p>
+              </div>
+              <div id="logo">
+                <img alt="logo" src="./images/logo.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="wrapperTitle">
+        <div>Kara's Letters</div>
+        <button id="openModal" class="btn material-icons">settings</button>
+        <div id="tutorial" class="btn material-icons">question_mark</div>
+      </div>
+      <div id="mid">
+        <button id="c1" class="userChoice">c</button>
+        <button id="c2" class="userChoice">b</button>
+        <button id="c3" class="userChoice">a</button>
+        <div id="fluid-meter"></div>
+      </div>
+      <div id="footer">
+        <button id="speakBtn" class="btn material-icons speakBtn">
+          play_arrow
+        </button>
+        <img alt="wizard" src="./images/wizard.png" />
+      </div>
+    </div>
+  </body>
+</html>
