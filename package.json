@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/AlphaT7/KarasLetters#readme",
   "scripts": {
-    "build": "npx vite build && workbox generateSW workbox.config.js && firebase deploy"
+    "build": "npx vite build && workbox generateSW workbox.config.js"
   },
   "dependencies": {
     "@brenoroosevelt/toast": "^2.0.3",
@@ -24,6 +24,6 @@
     "intro.js": "^7.2.0"
   },
   "devDependencies": {
-    "workbox": "^0.0.0"
+    "workbox-cli": "^7.4.1"
   }
 }
