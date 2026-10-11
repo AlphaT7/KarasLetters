@@ -1,4 +1,5 @@
 export default {
+  "type": "module",
   root: "./src/",
   publicDir: "../public/",
   build: {

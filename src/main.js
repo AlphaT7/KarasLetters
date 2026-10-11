@@ -599,16 +599,13 @@ function init() {
 }
 
 function randomQuery(objArray) {
-  let query = objArray[(Math.random() * (objArray.length - 1)).toFixed(0)];
-  if (answer == query) {
-    randomQuery(objArray);
-  } else {
-    return query;
-  }
+  let availableQueries = objArray.filter((query) => query !== answer);
+  let candidates = availableQueries.length > 0 ? availableQueries : objArray;
+  return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
 function randomCharacter(characters) {
-  return characters[(Math.random() * (characters.length - 1)).toFixed(0)];
+  return characters[Math.floor(Math.random() * characters.length)];
 }
 
 function filterUsed(characters, exclusion) {
